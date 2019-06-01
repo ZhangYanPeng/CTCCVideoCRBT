@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans:beans xmlns="http://www.springframework.org/schema/mvc"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xmlns:beans="http://www.springframework.org/schema/beans"
-	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p" 
+	xmlns:task="http://www.springframework.org/schema/task"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
@@ -23,6 +28,58 @@
 	
 	<context:component-scan base-package="com.CTCC.CRBT" />
 	
+	<!-- <bean id="dataSource"
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+        <property name="url" value="jdbc:oracle:thin:@192.168.1.250:1521:VideoCRBT" />
+        <property name="username" value="system" />
+        <property name="password" value="123" />
+    </bean> -->
+    
+    <beans:bean id="DataSource" class="org.apache.commons.dbcp.BasicDataSource">  
+        <beans:property name="driverClassName">  
+            <beans:value>oracle.jdbc.driver.OracleDriver</beans:value>  
+        </beans:property>  
+        <beans:property name="url">  
+            <beans:value>jdbc:oracle:thin:@192.168.1.250:1521:VideoCRBT</beans:value>  
+        </beans:property>  
+        <beans:property name="username">  
+            <beans:value>system</beans:value>  
+        </beans:property>   
+        <beans:property name="password">  
+            <beans:value>123</beans:value>  
+        </beans:property>  
+    </beans:bean>  
+    
+	<!-- Hibernate Session Factory -->
+	<beans:bean id="mySessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<beans:property name="dataSource" ref="DataSource" />
+		<beans:property name="packagesToScan">
+			<beans:array>
+				<beans:value>cn.edu.xjtu.evaluation</beans:value>
+			</beans:array>
+		</beans:property>
+		<beans:property name="hibernateProperties">
+			<beans:value>
+				hibernate.dialect=org.hibernate.dialect.Oracle10gDialect
+				hibernate.current_session_context_class=thread
+				hibernate.query.substitutions=true
+				hibernate.show_sql=true
+				hibernate.format_sql=true
+				hibernate.hbm2ddl.auto=update
+			</beans:value>
+		</beans:property>
+	</beans:bean>
+
+	<!-- Hibernate Transaction Manager -->
+	<beans:bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<beans:property name="sessionFactory" ref="mySessionFactory" />
+	</beans:bean>
+
+	<!-- Activates annotation based transaction management -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
 	
 	
 </beans:beans>
