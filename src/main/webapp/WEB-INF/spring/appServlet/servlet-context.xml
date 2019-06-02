@@ -57,7 +57,7 @@
 		<beans:property name="dataSource" ref="DataSource" />
 		<beans:property name="packagesToScan">
 			<beans:array>
-				<beans:value>cn.edu.xjtu.evaluation</beans:value>
+				<beans:value>com.CTCC.CRBT.Entity</beans:value>
 			</beans:array>
 		</beans:property>
 		<beans:property name="hibernateProperties">
@@ -80,6 +80,5 @@
 
 	<!-- Activates annotation based transaction management -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
-	
 	
 </beans:beans>
