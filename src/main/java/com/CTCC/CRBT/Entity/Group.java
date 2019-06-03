@@ -25,12 +25,17 @@ public class Group {
 	private long group_id;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "group_id")
+	@JoinColumn(name="group_group_id") 
 	@JsonIgnore
 	private Set<Account> accounts;
 	
 	@ManyToOne
 	private Video default_video;
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name="owner_group_group_id") 
+	@JsonIgnore
+	private Set<Video> owner_videos;
 
 	public long getGroup_id() {
 		return group_id;
@@ -55,4 +60,13 @@ public class Group {
 	public void setDefault_video(Video default_video) {
 		this.default_video = default_video;
 	}
+
+	public Set<Video> getOwner_videos() {
+		return owner_videos;
+	}
+
+	public void setOwner_videos(Set<Video> owner_videos) {
+		this.owner_videos = owner_videos;
+	}
+	
 }

@@ -1,14 +1,21 @@
 package com.CTCC.CRBT.Entity;
 
 import java.sql.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 @Entity
 @Table(name="T_ACCOUNT")
@@ -27,6 +34,11 @@ public class Account {
 	
 	@ManyToOne
 	private Video default_video;
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name="owner_account_usr_id") 
+	@JsonIgnore
+	private Set<Video> owner_videos;
 	
 	public long getUsr_id() {
 		return usr_id;
@@ -123,4 +135,14 @@ public class Account {
 	public void setUsrStatus(int usr_status) {
 		this.usr_status = usr_status;
 	}
+
+	public Set<Video> getOwner_videos() {
+		return owner_videos;
+	}
+
+	public void setOwner_videos(Set<Video> owner_videos) {
+		this.owner_videos = owner_videos;
+	}
+	
+	
 }

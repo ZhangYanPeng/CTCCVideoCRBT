@@ -23,8 +23,8 @@ public class VideoType {
 	@SequenceGenerator(name = "VideoTypeSeq", initialValue = 1, allocationSize = 1, sequenceName = "VIDEO_TYPE_SEQUENCE")
 	private long video_type_id; //分类的id
 	private String type_name; //视频的分类，音乐、搞笑等等
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "video_type_id")
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)	
+	@JoinColumn(name="type_video_type_id") 
 	@JsonIgnore
 	private Set<Video> videos;
 	
@@ -46,6 +46,5 @@ public class VideoType {
 	public void setVideos(Set<Video> videos) {
 		this.videos = videos;
 	}
-
 	
 }

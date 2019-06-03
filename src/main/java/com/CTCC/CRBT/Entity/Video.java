@@ -39,18 +39,17 @@ public class Video {
 	private Rate rate;
 	
 	private int owner_type; //0: 公开 1：个人用户   2：集团用户
-	@OneToOne
+	@ManyToOne
 	private Account owner_account;
-	@OneToOne
+	@ManyToOne
 	private Group owner_Group;
-	
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "video_id")
+	@JoinColumn(name="default_video_video_id") 
 	@JsonIgnore
 	private Set<Group> groups;
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "video_id")
+	@JoinColumn(name="default_video_video_id") 
 	@JsonIgnore
 	private Set<Account> accounts;
 	

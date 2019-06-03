@@ -44,7 +44,7 @@
             <beans:value>jdbc:oracle:thin:@192.168.1.250:1521:VideoCRBT</beans:value>  
         </beans:property>  
         <beans:property name="username">  
-            <beans:value>system</beans:value>  
+            <beans:value>xjtu</beans:value>  
         </beans:property>   
         <beans:property name="password">  
             <beans:value>123</beans:value>  
