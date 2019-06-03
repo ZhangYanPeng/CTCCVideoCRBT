@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<title>大学英语听力评估</title>
+	<!-- Path to Framework7 Library CSS-->
+	<link rel="stylesheet" href="./css/framework7.material.min.css">
+	<link rel="stylesheet" href="./css/framework7.material.colors.min.css">
+	<!-- Path to your custom app styles-->
+	<link rel="stylesheet" href="./lib/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="./css/my-app.css">
+	<script type="text/javascript" src="lib/jquery/jquery.js"></script>
+</head>
+<body class="theme-indigo ">
+	<!-- Status bar overlay for fullscreen mode-->
+	<div class="statusbar-overlay"></div>
+	<!-- Panels overlay-->
+	<div class="panel-overlay"></div>
+	<!-- Left panel with reveal effect-->
+	<div class="panel panel-left panel-cover">
+		<div class="content-block">
+			<p>Left panel content goes here</p>
+		</div>
+	</div>
+	<!-- Right panel with cover effect-->
+	<div class="panel panel-right panel-cover" style="background: #D0D0D0;">
+	</div>
+	<!-- Views-->
+	<div class="views">
+		<!-- Left view-->
+		<div class="view view-left navbar-through">
+			<div class="navbar" style="background-color: rgb(17,93,141); height: 100px;">
+				<div class="navbar-inner" >
+					<div class="center sliding"></div>
+				</div>
+			</div>
+			<div class="pages">
+				<div data-page="index-left" class="page">
+					<div class="page-content" style="background: rgb(17,93,141); padding-top: 100px;">
+						<div class="card" style="background: rgb(12,24,40); color:white;">
+							<div class="card-header" >个人中心</div>
+							<div class="card-content">
+								<div class="card-content-inner">
+									<p id="user_name" style="margin-left: 40px;"></p>
+									<p id="user_type" style="margin-left: 40px;"></p>
+									<div id="personal_func">
+										<p class="buttons-row">
+											<a href="info.html" data-view=".view-main" class="button" style="background: white;color: rgb(12,24,40);">编辑信息</a> <a href="#"
+											class="button" id="logout" style="background: white;color: rgb(12,24,40);">注销</a>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- for student -->
+						<div class="list-block accordion-list" id="stu_func_list">
+							<ul>
+								<li class="accordion-item">
+									<a href="#" class="item-content item-link">
+										<div class="item-inner">
+											<div class="item-title" style="color: #FFFFFF;">听力诊断</div>
+										</div>
+									</a>
+									<div class="accordion-item-content">
+										<div class="list-block">
+											<ul>
+												<li>
+													<a href="test.html?id=-1&type=0" data-view=".view-main" class="item-link">
+														<div class="item-content">
+															<div class="item-inner">
+																<div class="item-title" style="color: #FFFFFF;">&nbsp;&nbsp;&nbsp;&nbsp;认知诊断</div>
+															</div>
+														</div>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</li>
+								<li class="accordion-item">
+									<a href="#" class="item-content item-link">
+										<div class="item-inner">
+											<div class="item-title" style="color: #FFFFFF;">评估结果</div>
+										</div>
+									</a>
+									<div class="accordion-item-content">
+										<div class="list-block">
+											<ul>
+												<li>
+													<a href="test_rlist.html?type=1" data-view=".view-main" class="item-link">
+														<div class="item-content">
+															<div class="item-inner">
+																<div class="item-title"  style="color: #FFFFFF;">&nbsp;&nbsp;&nbsp;&nbsp;单次测试报告</div>
+															</div>
+														</div>
+													</a>
+												</li>
+												<li>
+													<a href="javascript:getOverallReport();" class="item-link">
+														<div class="item-content">
+															<div class="item-inner">
+																<div class="item-title"  style="color: #FFFFFF;">&nbsp;&nbsp;&nbsp;&nbsp;总结报告</div>
+															</div>
+														</div>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+
+						<!-- for teacher -->
+						<div class="list-block accordion-list" id="tea_func_list" style="display: none;">
+							<ul>
+								<li class="accordion-item"><a href="#"
+									class="item-content item-link">
+									<div class="item-inner">
+										<div class="item-title">评估管理</div>
+									</div>
+								</a>
+								<div class="accordion-item-content">
+									<div class="list-block">
+										<ul>
+											<li><a href="exercise_management.html" data-view=".view-main"
+												class="item-link">
+												<div class="item-content">
+													<div class="item-inner">
+														<div class="item-title">试题管理</div>
+													</div>
+												</div>
+											</a></li>
+											<li><a href="test.html" data-view=".view-main"
+												class="item-link">
+												<div class="item-content">
+													<div class="item-inner">
+														<div class="item-title">测验管理</div>
+													</div>
+												</div>
+											</a></li>
+										</ul>
+									</div>
+								</div></li>
+								<li class="accordion-item"><a href="#"
+									class="item-content item-link">
+									<div class="item-inner">
+										<div class="item-title">班级管理</div>
+									</div>
+								</a>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Right view, it is main view-->
+		<div class="view view-main navbar-through">
+			<div class="navbar" style="background-color: rgb(17,93,141);height: 100px;">
+				<div class="navbar-inner">
+					<div class="center sliding" >听力诊断</div>
+					<div class="right" id="bar_right"></div>
+				</div>
+			</div>
+			<!-- Pages-->
+			<div class="pages">
+				<!-- Page, data-page contains page name-->
+				<div data-page="index-right" class="page">
+					<!-- Scrollable page content-->
+					<div class="page-content" style="background:url('img/background_right_bottom.png;');background-size:cover;padding-top: 100px;">
+						<div class="content-block-title" id="test_title"></div>
+						<div class="content-block" align="center">
+							<div>
+								<p>
+									<font size="12" >
+										Welcome！
+									</font>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Path to Framework7 Library JS-->
+	<script type="text/javascript" src="js/framework7.min.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<!-- Path to your app js-->
+</body>
+</html>
