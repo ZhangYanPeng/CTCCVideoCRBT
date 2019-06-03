@@ -1,29 +1,96 @@
-<div class="pages">
-	<!-- Page, data-page contains page name-->
-	<div data-page="admin_list" class="page">
-		<!-- Scrollable page content-->
-		<div class="content-block-title">管理员列表</div>
-		<div class="list-block">
-			<ul>
-				<li class="item-content">
-					<div class="item-inner">
-						<div class="item-title">
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<title>VRBT业务管理平台</title>
+	<!-- Path to Framework7 Library CSS-->
+	<link rel="stylesheet" href="../css/framework7.material.min.css">
+	<link rel="stylesheet" href="../css/framework7.material.colors.min.css">
+	<!-- Path to your custom app styles-->
+	<link rel="stylesheet" href="../lib/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../css/my-app.css">
+	<script type="text/javascript" src="../lib/jquery/jquery.js"></script>
+</head>
+<body class="theme-indigo ">
+	<!-- Status bar overlay for fullscreen mode-->
+	<div class="statusbar-overlay"></div>
+	<!-- Panels overlay-->
+	<div class="panel-overlay"></div>
+	<!-- Left panel with reveal effect-->
+	<div class="panel panel-left panel-cover">
+		<div class="content-block">
+			<p>Left panel content goes here</p>
+		</div>
+	</div>
+	<!-- Right panel with cover effect-->
+	<div class="panel panel-right panel-cover" style="background: #D0D0D0;">
+	</div>
+	<!-- Views-->
+	<div class="views">
+		<!-- Left view-->
+		<div class="view view-left navbar-through">
+			<div class="navbar" style="background-color: rgb(17,93,141); height: 100px;">
+				<div class="navbar-inner" >
+					<div class="center sliding"></div>
+				</div>
+			</div>
+			<div class="pages">
+				<div data-page="index-left" class="page">
+					<div class="page-content" style="background: rgb(17,93,141); padding-top: 100px;">
 						
+						<!-- for student -->
+						<div class="list-block accordion-list" id="stu_func_list">
+							<ul>
+								<li class="accordion-item">
+									<a href="mgt.html" data-view=".view-main">
+										<div class="item-inner">
+											<div class="item-title" style="color: #FFFFFF;">管理员管理</div>
+										</div>
+									</a>
+								</li>
+							</ul>
 						</div>
 					</div>
-				</li>
-				<li class="item-content">
-					<div class="item-inner">
-						<div class="item-title">Item with badge</div>
+				</div>
+			</div>
+		</div>
+		<!-- Right view, it is main view-->
+		<div class="view view-main navbar-through">
+			<div class="navbar" style="background-color: rgb(17,93,141);height: 100px;">
+				<div class="navbar-inner">
+					<div class="center sliding" >管理员信息管理</div>
+					<div class="right" id="bar_right"></div>
+				</div>
+			</div>
+			<!-- Pages-->
+			<div class="pages">
+				<!-- Page, data-page contains page name-->
+				<div data-page="index-right" class="page">
+					<!-- Scrollable page content-->
+					<div class="page-content" style="background:url('../img/background_right_bottom.png;');background-size:cover;padding-top: 100px;">
+						<div class="content-block-title" id="test_title"></div>
+						<div class="content-block" align="center">
+							<div>
+								<p>
+									<font size="12" >
+										Welcome！
+									</font>
+								</p>
+							</div>
+						</div>
 					</div>
-				</li>
-				<li class="item-content">
-					<div class="item-inner">
-						<div class="item-title">Another item</div>
-					</div>
-				</li>
-			</ul>
+				</div>
+			</div>
 		</div>
 	</div>
 
-</div>
+	<!-- Path to Framework7 Library JS-->
+	<script type="text/javascript" src="js/framework7.min.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<!-- Path to your app js-->
+</body>
+</html>
