@@ -6,7 +6,7 @@
 	content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<title>大学英语听力评估</title>
+	<title>VRBT业务管理平台</title>
 	<!-- Path to Framework7 Library CSS-->
 	<link rel="stylesheet" href="./css/framework7.material.min.css">
 	<link rel="stylesheet" href="./css/framework7.material.colors.min.css">
@@ -41,45 +41,16 @@
 			<div class="pages">
 				<div data-page="index-left" class="page">
 					<div class="page-content" style="background: rgb(17,93,141); padding-top: 100px;">
-						<div class="card" style="background: rgb(12,24,40); color:white;">
-							<div class="card-header" >个人中心</div>
-							<div class="card-content">
-								<div class="card-content-inner">
-									<p id="user_name" style="margin-left: 40px;"></p>
-									<p id="user_type" style="margin-left: 40px;"></p>
-									<div id="personal_func">
-										<p class="buttons-row">
-											<a href="info.html" data-view=".view-main" class="button" style="background: white;color: rgb(12,24,40);">编辑信息</a> <a href="#"
-											class="button" id="logout" style="background: white;color: rgb(12,24,40);">注销</a>
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
+						
 						<!-- for student -->
 						<div class="list-block accordion-list" id="stu_func_list">
 							<ul>
 								<li class="accordion-item">
-									<a href="#" class="item-content item-link">
+									<a href="fun/mgt.html" data-view=".view-main">
 										<div class="item-inner">
-											<div class="item-title" style="color: #FFFFFF;">听力诊断</div>
+											<div class="item-title" style="color: #FFFFFF;">管理员管理</div>
 										</div>
 									</a>
-									<div class="accordion-item-content">
-										<div class="list-block">
-											<ul>
-												<li>
-													<a href="test.html?id=-1&type=0" data-view=".view-main" class="item-link">
-														<div class="item-content">
-															<div class="item-inner">
-																<div class="item-title" style="color: #FFFFFF;">&nbsp;&nbsp;&nbsp;&nbsp;认知诊断</div>
-															</div>
-														</div>
-													</a>
-												</li>
-											</ul>
-										</div>
-									</div>
 								</li>
 								<li class="accordion-item">
 									<a href="#" class="item-content item-link">
@@ -112,46 +83,6 @@
 										</div>
 									</div>
 								</li>
-							</ul>
-						</div>
-
-						<!-- for teacher -->
-						<div class="list-block accordion-list" id="tea_func_list" style="display: none;">
-							<ul>
-								<li class="accordion-item"><a href="#"
-									class="item-content item-link">
-									<div class="item-inner">
-										<div class="item-title">评估管理</div>
-									</div>
-								</a>
-								<div class="accordion-item-content">
-									<div class="list-block">
-										<ul>
-											<li><a href="exercise_management.html" data-view=".view-main"
-												class="item-link">
-												<div class="item-content">
-													<div class="item-inner">
-														<div class="item-title">试题管理</div>
-													</div>
-												</div>
-											</a></li>
-											<li><a href="test.html" data-view=".view-main"
-												class="item-link">
-												<div class="item-content">
-													<div class="item-inner">
-														<div class="item-title">测验管理</div>
-													</div>
-												</div>
-											</a></li>
-										</ul>
-									</div>
-								</div></li>
-								<li class="accordion-item"><a href="#"
-									class="item-content item-link">
-									<div class="item-inner">
-										<div class="item-title">班级管理</div>
-									</div>
-								</a>
 							</ul>
 						</div>
 					</div>
