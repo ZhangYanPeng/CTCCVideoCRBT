@@ -19,10 +19,15 @@
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
+	<resources mapping="/admin/**" location="/admin/" />
+	<resources mapping="/admin/css/**" location="/admin/css/" />
+	<resources mapping="/admin/lib/**" location="/admin/lib/" />
+	<resources mapping="/admin/js/**" location="/admin/js/" />
+	<resources mapping="/admin/img/**" location="/admin/img/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<beans:property name="prefix" value="/www/" />
+		<beans:property name="prefix" value="/" />
 		<beans:property name="suffix" value=".html" />
 	</beans:bean>
 	
@@ -57,13 +62,13 @@
 		<beans:property name="dataSource" ref="DataSource" />
 		<beans:property name="packagesToScan">
 			<beans:array>
-				<beans:value>com.CTCC.CRBT.Entity</beans:value>
+				<beans:value>com.CTCC.CRBT</beans:value>
 			</beans:array>
 		</beans:property>
 		<beans:property name="hibernateProperties">
 			<beans:value>
 				hibernate.dialect=org.hibernate.dialect.Oracle10gDialect
-				hibernate.current_session_context_class=thread
+				hibernate.current_session_context_class=org.springframework.orm.hibernate4.SpringSessionContext
 				hibernate.query.substitutions=true
 				hibernate.show_sql=true
 				hibernate.format_sql=true
