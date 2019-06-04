@@ -1,5 +1,5 @@
 function jump(t_url) {
-	window.location.href = "./jump?url=" + t_url;
+	window.location.href = "./topage?url=" + t_url;
 }
 
 function getQueryString(name) {

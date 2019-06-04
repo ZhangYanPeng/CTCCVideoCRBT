@@ -78,4 +78,16 @@ public class AdminServiceImpl implements IAdminService {
 		}
 	}
 
+	@Override
+	@Transactional
+	public int Delete(long id) {
+		// TODO Auto-generated method stub
+		try{
+			adminDAO.deleteById(id);
+		}catch(Exception e){
+			return 0;
+		}
+		return 1;
+	}
+
 }

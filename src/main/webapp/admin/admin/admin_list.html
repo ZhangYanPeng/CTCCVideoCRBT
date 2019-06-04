@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>管理员管理</title>
+<link rel="stylesheet" type="text/css" href="../css/css.css" />
+<link rel="stylesheet" href="../css/jqpagination.css" />
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script src="../js/jquery.jqpagination.js"></script>
+<!-- <script type="text/javascript" src="js/page.js" ></script> -->
+<script type="text/javascript" src="../js/init.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="./js/admin_list.js"></script>
+</head>
+
+<body>
+	<div id="pageAll">
+		<div class="pageTop">
+			<div class="page">
+				<img src="../img/coin02.png" /><span><a href="#">首页</a>&nbsp;-&nbsp;-</span>&nbsp;管理员管理
+			</div>
+		</div>
+
+		<div class="page">
+			<!-- user页面样式 -->
+			<div class="connoisseur">
+				<div class="conform">
+					<form>
+						<div class="cfD">
+							<a href="./useradd.html">
+								<button class="userbtn" disabled="disabled">新增管理员</button>
+							</a>
+						</div>
+					</form>
+				</div>
+				<!-- user 表格 显示 -->
+				<div class="conShow">
+					<table id="adminlist" border="1" cellspacing="0" cellpadding="0">
+					</table>
+				</div>
+				<div class="paging">
+					<div class="pagination">
+						<a href="#" class="first" onclick="javascript:first();">&laquo;</a>
+						<a href="#" class="previous" onclick="javascript:previous();">&lsaquo;</a>
+						<input id="page_num" type="text" readonly="readonly" /> <a
+							href="#" class="next" onclick="javascript:next();">&rsaquo;</a> <a
+							href="#" class="last" onclick="javascript:last();">&raquo;</a>
+					</div>
+				</div>
+			</div>
+			<!-- user 表格 显示 end-->
+		</div>
+		<!-- user页面样式end -->
+	</div>
+
+	<!-- 删除弹出框  end-->
+</body>
+</html>

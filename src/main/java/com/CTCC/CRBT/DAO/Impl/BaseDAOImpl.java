@@ -82,6 +82,19 @@ public class BaseDAOImpl<T, ID extends Serializable> implements IBaseDAO<T, ID> 
 		T load = (T) this.getSession().load(getEntityClass(), id);
 		return load;
 	}
+	
+	/**
+	 * <get> <查找的get方法>
+	 * 
+	 * @return 查询出来的实体
+	 * @see com.itv.launcher.util.IBaseDao#get(java.io.Serializable)
+	 */
+	@Override
+	public T get() {
+		T load = (T) getEntityClass();
+		return load;
+	}
+	
 
 	/**
 	 * <get> <查找的get方法>

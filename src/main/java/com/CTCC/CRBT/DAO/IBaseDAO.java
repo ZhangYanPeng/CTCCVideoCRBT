@@ -29,6 +29,12 @@ public interface IBaseDAO<T, ID extends Serializable> {
 	 * @return 查询出来的实体
 	 */
 	public abstract T load(ID id);
+	
+	/**
+	 * <get> <查找的get方法>
+	 * @return 查询出来的实体
+	 */
+	public abstract T get();
 
 	/**
 	 * <get> <查找的get方法>
