@@ -13,45 +13,36 @@ public class Admin {
 	@Id    
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "AdminSeq")    
 	@SequenceGenerator(name = "AdminSeq", initialValue = 1, allocationSize = 1, sequenceName = "ADMIN_SEQUENCE")
-	private long id;
+	private long admin_id;//管理员标识
 	
-	private String username;
-	private String password;
-	
+	private String admin_name;//管理员账号名
+	private String admin_pwd;//管理员账号密码	
 	
 	public Admin() {
 		super();
 	}
 
-
-	public long getId() {
-		return id;
+	public long getAdmin_id() {
+		return admin_id;
 	}
 
-
-	public void setId(long id) {
-		this.id = id;
+	public void setAdmin_id(long admin_id) {
+		this.admin_id = admin_id;
 	}
 
-
-	public String getUsername() {
-		return username;
+	public String getAdmin_name() {
+		return admin_name;
 	}
 
-
-	public void setUsername(String username) {
-		this.username = username;
+	public void setAdmin_name(String admin_name) {
+		this.admin_name = admin_name;
 	}
 
-
-	public String getPassword() {
-		return password;
+	public String getAdmin_pwd() {
+		return admin_pwd;
 	}
 
-
-	public void setPassword(String password) {
-		this.password = password;
+	public void setAdmin_pwd(String admin_pwd) {
+		this.admin_pwd = admin_pwd;
 	}
-	
-	
 }

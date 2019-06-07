@@ -45,7 +45,7 @@ public class AdminServiceImpl implements IAdminService {
 		// TODO Auto-generated method stub
 		try{
 			adminDAO.update(admin);
-			return adminDAO.get(admin.getId());
+			return adminDAO.get(admin.getAdmin_id());
 		}catch(Exception e){
 			return null;
 		}
@@ -56,11 +56,11 @@ public class AdminServiceImpl implements IAdminService {
 	public Admin Login(Admin admin) {
 		// TODO Auto-generated method stub
 		try{
-			String hql = "from Admin where username = ? and password = ?";
-			Object[] values = {admin.getUsername(), admin.getPassword()};
+			String hql = "from Admin where admin_name = ? and admin_pwd = ?";
+			Object[] values = {admin.getAdmin_name(), admin.getAdmin_pwd()};
 			return adminDAO.getByHQL(hql, values);
 		}catch(Exception e){
-			admin.setId(-1);
+			admin.setAdmin_id(-1);
 			return admin;
 		}
 	}

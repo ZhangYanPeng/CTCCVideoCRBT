@@ -37,22 +37,22 @@ var page_num = 1;
 					data.results,
 					function(index, value) {
 						var td_id = $('<td></td>').append(
-							value.id);
+							value.admin_id);
 						var td_un = $('<td></td>').append(
-							value.username);
+							value.admin_name);
 						var td_pd = $('<td></td>').append(
-							value.password);
+							value.admin_pwd);
 						var a_edit = $('<a></a>').attr(
 							'href',
 							"useradd.html?id="
-							+ value.id);
+							+ value.admin_id);
 						a_edit
 						.append("<img class='operation' src='../img/update.png'></a>");
 						var td_op = $('<td></td>')
 						.append(a_edit)
 						.append(
 							"<img class='operation delban' src='../img/delete.png' onclick='javascript:removeAdmin("
-							+ value.id
+							+ value.admin_id
 							+ ");' /></td>");
 						var tr = $('<tr></tr>').attr(
 							'height', "40px");

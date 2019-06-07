@@ -25,15 +25,16 @@ public class Video {
 	@Id    
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "menuSeq")    
 	@SequenceGenerator(name = "menuSeq", initialValue = 1, allocationSize = 1, sequenceName = "MENU_SEQUENCE")
-	private String video_id; //��Ƶid
-	private String video_name; //��Ƶ����
-	private String video_desc; //��Ƶ����
+	private String video_id; //视频标识
+	private String video_name; //视频名称
+	private String video_desc; //视频描述
+	
 	@ManyToOne
-	private VideoType type; //��Ƶ����
-	private String tags; //"不同的标签以；间隔"
-	private Date create_date; 
-	private double price;
-	private String video_path;
+	private VideoType type; //视频分类（搞笑、MV等）
+	private String tags; //不同的标签以“；”间隔
+	private Date create_date; //视频创建时间
+	private double price;//视频订购价格
+	private String video_path;//视频地址（文件服务器接口）
 
 	@OneToOne
 	private Rate rate;
@@ -43,6 +44,8 @@ public class Video {
 	private Account owner_account;
 	@ManyToOne
 	private Group owner_Group;
+	@ManyToOne
+	private ContentProvider owner_cp;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name="default_video_video_id") 
@@ -142,6 +145,12 @@ public class Video {
 	}
 	public void setAccounts(Set<Account> accounts) {
 		this.accounts = accounts;
+	}
+	public ContentProvider getOwner_cp() {
+		return owner_cp;
+	}
+	public void setOwner_cp(ContentProvider owner_cp) {
+		this.owner_cp = owner_cp;
 	}
 	
 	

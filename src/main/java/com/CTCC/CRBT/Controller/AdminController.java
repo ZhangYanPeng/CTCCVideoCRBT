@@ -22,8 +22,8 @@ public class AdminController {
 	@RequestMapping(value = "/login")
 	public @ResponseBody Admin adminLogin(String username, String password) {
 		Admin admin = new Admin();
-		admin.setUsername(username);
-		admin.setPassword(password);
+		admin.setAdmin_name(username);
+		admin.setAdmin_pwd(password);
 		admin = adminService.Login(admin);
 		return admin;
 	}
