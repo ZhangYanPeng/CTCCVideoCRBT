@@ -1,6 +1,5 @@
 package com.CTCC.CRBT;
 
-import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -26,7 +25,6 @@ public class HomeController {
 	@RequestMapping(value = "/topage")
 	public String topage(HttpServletRequest request, HttpServletResponse response, String url) {
 		response.setContentType("text/html;charset=utf-8");
-		System.out.println(url);
 		return "/" + url;
 	}
 

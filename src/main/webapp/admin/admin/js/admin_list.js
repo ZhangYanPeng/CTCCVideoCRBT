@@ -26,10 +26,12 @@ var page_num = 1;
 				$("#page_num").val(p);
 
 				var tab_title = "<tr>"
-				+ "<td width='66px' class='tdColor tdC'>序号</td>"
-				+ "<td width='730px' class='tdColor'>用户名</td>"
-				+ "<td width='730px' class='tdColor'>密码</td>"
-				+ "<td width='130px' class='tdColor'>操作</td>"
+				+ "<td width='30px' class='tdColor tdC'>序号</td>"
+				+ "<td width='200px' class='tdColor'>用户名</td>"
+				+ "<td width='200px' class='tdColor'>密码</td>"
+				+ "<td width='500px' class='tdColor'>详细信息</td>"
+				+ "<td width='150px' class='tdColor'>账户状态</td>"
+				+ "<td width='60px' class='tdColor'>操作</td>"
 				+ "	</tr>";
 				$("#adminlist").html(tab_title);
 
@@ -42,6 +44,14 @@ var page_num = 1;
 							value.admin_name);
 						var td_pd = $('<td></td>').append(
 							value.admin_pwd);
+						var td_desc = $('<td></td>').append(
+							value.admin_desc);
+						var td_state= $('<td></td>');
+						if(value.valid_state == 1){
+							td_state.append("正常").append($('<a></a>').append("（冻结该账户）").attr('href','javascript:valid('+value.admin_id +',0);'));
+						}else{
+							td_state.append("冻结").append($('<a></a>').append("（解除冻结）").attr('href','javascript:valid('+value.admin_id +',1);'));
+						}
 						var a_edit = $('<a></a>').attr(
 							'href',
 							"useradd.html?id="
@@ -58,9 +68,35 @@ var page_num = 1;
 							'height', "40px");
 						tr.append(td_id).append(td_un)
 						.append(td_pd)
+						.append(td_desc)
+						.append(td_state)
 						.append(td_op);
 						$("#adminlist").append(tr);
 					});
+			}
+		});
+	}
+
+	function valid(admin_id, valstate) {
+		$.ajax({
+			sync : false,
+			cache : false,
+			type : 'POST',
+			crossDomain : true,
+			url : "../valid_admin",
+			data : {
+				id : admin_id,
+				state : valstate,
+			},
+			dataType : "json",
+			contentType : "application/x-www-form-urlencoded;charset=utf-8",
+			error : function(e) {
+				alert("网络错误，请重试");
+			},
+			success : function(data) {
+				if (data == 1) {
+					list(page_num);
+				}
 			}
 		});
 	}

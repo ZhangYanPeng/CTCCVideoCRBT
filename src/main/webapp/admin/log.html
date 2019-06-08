@@ -8,34 +8,6 @@
 <script type="text/javascript" src="./admin/js/jquery.min.js"></script>
 <script type="text/javascript" src="./admin/js/public.js"></script>
 <script type="text/javascript" src="./admin/js/common.js"></script>
-<script type="text/javascript">
-	function login() {
-		$.ajax({
-			async : false,
-			cache : false,
-			type : 'POST',
-			crossDomain : true,
-			url : "./admin/login",
-			data : {
-				username : $('#username').val(),
-				password : $('#password').val()
-			},
-			dataType : "json",
-			contentType : "application/x-www-form-urlencoded; charset=utf-8",
-			error : function(e) {
-				alert("鐧婚檰澶辫触锛岃閲嶈瘯");
-			},
-			success : function(data) {
-				var storage = window.localStorage;
-				storage["id"] = data.id;
-				storage["admin"] = data;
-				if (data.id != -1) {
-					jump("backend");
-				}
-			}
-		});
-	}
-</script>
 </head>
 <body>
 

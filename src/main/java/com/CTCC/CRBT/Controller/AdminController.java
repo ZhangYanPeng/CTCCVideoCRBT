@@ -39,4 +39,17 @@ public class AdminController {
 	public @ResponseBody int delete_admin(String id) {
 		return adminService.Delete(Long.valueOf(id));
 	}
+	
+	// 管理员状态信息变更加载
+	@RequestMapping(value = "/valid_admin")
+	public @ResponseBody int valid_admin(String id, String state) {
+		Admin admin = adminService.Get(Long.valueOf(id));
+		admin.setValid_state(Integer.valueOf(state));
+		try{
+			adminService.Edit(admin);
+			return 1;
+		}catch(Exception exp){
+			return 0;
+		}
+	}
 }
