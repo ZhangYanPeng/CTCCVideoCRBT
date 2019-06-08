@@ -16,7 +16,9 @@ public class Admin {
 	private long admin_id;//管理员标识
 	
 	private String admin_name;//管理员账号名
-	private String admin_pwd;//管理员账号密码	
+	private String admin_pwd;//管理员账号密码
+	private String admin_desc;//管理员描述
+	private int validate;//0：冻结；1：有效
 	
 	public Admin() {
 		super();
@@ -44,5 +46,21 @@ public class Admin {
 
 	public void setAdmin_pwd(String admin_pwd) {
 		this.admin_pwd = admin_pwd;
+	}
+
+	public String getAdmin_desc() {
+		return admin_desc;
+	}
+
+	public void setAdmin_desc(String admin_desc) {
+		this.admin_desc = admin_desc;
+	}
+
+	public int getValidate() {
+		return validate;
+	}
+
+	public void setValidate(int validate) {
+		this.validate = validate;
 	}
 }
