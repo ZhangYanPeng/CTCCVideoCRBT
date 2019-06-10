@@ -101,7 +101,6 @@ var page_num = 1;
 			}
 		});
 	}
-		$.ajax({
 	
 	function find(){
 		list(1);
