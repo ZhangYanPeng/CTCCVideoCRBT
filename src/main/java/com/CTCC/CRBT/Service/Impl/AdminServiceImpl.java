@@ -21,7 +21,7 @@ public class AdminServiceImpl implements IAdminService {
 		// TODO Auto-generated method stub
 		try{
 			adminDAO.saveOrUpdate(admin);
-		}catch(Exception e){
+		}catch(Exception  e){
 			return 0;
 		}
 		return 1;
@@ -70,8 +70,8 @@ public class AdminServiceImpl implements IAdminService {
 	public PageResults<Admin> GetByPage(int pageNo) {
 		// TODO Auto-generated method stub
 		try{
-			String hql = "from Admin";
-			String countHql = "select COUNT(*) from Admin";
+			String hql = "from Admin where admin_id <> 1";
+			String countHql = "select COUNT(*) from Admin where admin_id <> 1";
 			return adminDAO.findPageByFetchedHql(hql, countHql, pageNo, Constant.PAGESIZE, null);
 		}catch(Exception e){
 			return null;
@@ -88,6 +88,19 @@ public class AdminServiceImpl implements IAdminService {
 			return 0;
 		}
 		return 1;
+	}
+
+	@Override
+	@Transactional
+	public Admin validAdminName(String admin_name) {
+		// TODO Auto-generated method stub
+		try{
+			String hql = "from Admin where admin_name = ?";
+			Object[] objs = {admin_name};
+			return adminDAO.getByHQL(hql, objs);
+		}catch(Exception e){
+			return null;
+		}
 	}
 
 }
