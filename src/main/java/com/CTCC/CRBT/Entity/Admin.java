@@ -1,5 +1,6 @@
 package com.CTCC.CRBT.Entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,7 +16,9 @@ public class Admin {
 	@SequenceGenerator(name = "AdminSeq", initialValue = 1, allocationSize = 1, sequenceName = "ADMIN_SEQUENCE")
 	private long admin_id;//管理员标识
 	
+	@Column( unique=true, nullable=false)
 	private String admin_name;//管理员账号名
+	@Column( unique=false, nullable=false)
 	private String admin_pwd;//管理员账号密码
 	private String admin_desc;//管理员描述
 	private int valid_state;//0：冻结；1：有效

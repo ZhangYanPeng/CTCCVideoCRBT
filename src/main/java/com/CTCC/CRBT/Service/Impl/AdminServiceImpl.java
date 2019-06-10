@@ -21,7 +21,7 @@ public class AdminServiceImpl implements IAdminService {
 		// TODO Auto-generated method stub
 		try{
 			adminDAO.saveOrUpdate(admin);
-		}catch(Exception e){
+		}catch(Exception  e){
 			return 0;
 		}
 		return 1;
@@ -70,19 +70,23 @@ public class AdminServiceImpl implements IAdminService {
 	public PageResults<Admin> GetByPage(int pageNo, String findStr) {
 		// TODO Auto-generated method stub
 		try{
-			String hql = "from Admin";
-			String countHql = "select COUNT(*) from Admin";
+			String hql = "from Admin where admin_id <> 1";
+			String countHql = "select COUNT(*) from Admin where admin_id <> 1";
 			
 			if(findStr != "") {
-				hql += " where admin_name like ?";
-				countHql += " where admin_name like ?";
+				hql += " and ( admin_name like ?";
+				countHql += " and ( admin_name like ?";
 				if(findStr.equals("冻结")){
-					hql += " or valid_state = 0";
-					countHql += " or valid_state = 0";
+					hql += " or valid_state = 0 )";
+					countHql += " or valid_state = 0 )";
 				}
 				else if(findStr.equals("正常")){
-					hql += " or valid_state = 1";
-					countHql += " or valid_state = 1";
+					hql += " or valid_state = 1 )";
+					countHql += " or valid_state = 1 )";
+				}
+				else{
+					hql += " )";
+					countHql += " )";
 				}
 				Object[] objs = {"%"+findStr+"%"};
 				PageResults<Admin> pr = adminDAO.findPageByFetchedHql(hql, countHql, pageNo, Constant.PAGESIZE, objs);
@@ -105,6 +109,19 @@ public class AdminServiceImpl implements IAdminService {
 			return 0;
 		}
 		return 1;
+	}
+
+	@Override
+	@Transactional
+	public Admin validAdminName(String admin_name) {
+		// TODO Auto-generated method stub
+		try{
+			String hql = "from Admin where admin_name = ?";
+			Object[] objs = {admin_name};
+			return adminDAO.getByHQL(hql, objs);
+		}catch(Exception e){
+			return null;
+		}
 	}
 
 }
