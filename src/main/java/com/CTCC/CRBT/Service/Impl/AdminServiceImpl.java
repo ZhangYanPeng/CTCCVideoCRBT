@@ -67,12 +67,29 @@ public class AdminServiceImpl implements IAdminService {
 
 	@Override
 	@Transactional
-	public PageResults<Admin> GetByPage(int pageNo) {
+	public PageResults<Admin> GetByPage(int pageNo, String findStr) {
 		// TODO Auto-generated method stub
 		try{
 			String hql = "from Admin";
 			String countHql = "select COUNT(*) from Admin";
-			return adminDAO.findPageByFetchedHql(hql, countHql, pageNo, Constant.PAGESIZE, null);
+			
+			if(findStr != "") {
+				hql += " where admin_name like ?";
+				countHql += " where admin_name like ?";
+				if(findStr.equals("冻结")){
+					hql += " or valid_state = 0";
+					countHql += " or valid_state = 0";
+				}
+				else if(findStr.equals("正常")){
+					hql += " or valid_state = 1";
+					countHql += " or valid_state = 1";
+				}
+				Object[] objs = {"%"+findStr+"%"};
+				PageResults<Admin> pr = adminDAO.findPageByFetchedHql(hql, countHql, pageNo, Constant.PAGESIZE, objs);
+				return pr;
+			}else {
+				return adminDAO.findPageByFetchedHql(hql, countHql, pageNo, Constant.PAGESIZE, null);
+			}
 		}catch(Exception e){
 			return null;
 		}

@@ -5,6 +5,7 @@ var page_num = 1;
 	});
 
 	function list(p) {
+		var fStr = $("#findTarStr").val();
 		$.ajax({
 			sync : false,
 			cache : false,
@@ -12,7 +13,8 @@ var page_num = 1;
 			crossDomain : true,
 			url : "../admin_list",
 			data : {
-				pageNo : p
+				pageNo : p,
+				findStr : fStr
 			},
 			dataType : "json",
 			contentType : "application/x-www-form-urlencoded; charset=utf-8",
@@ -20,7 +22,6 @@ var page_num = 1;
 				alert("网络错误，请重试");
 			},
 			success : function(data) {
-				console.log(data);
 				total_num = data.pageCount;
 				page_num = p;
 				$("#page_num").val(p);
@@ -100,36 +101,10 @@ var page_num = 1;
 			}
 		});
 	}
-
-	function save() {
-		if ($("#password").val() != $("#repassword").val()) {
-			alert("两次密码不一致，请检查！");
-			return;
-		}
 		$.ajax({
-			sync : false,
-			cache : false,
-			type : 'POST',
-			crossDomain : true,
-			url : "add_admin",
-			data : {
-				username : $("#nun").val(),
-				password : $("#npd").val(),
-			},
-			dataType : "json",
-			contentType : "application/x-www-form-urlencoded;charset=utf-8",
-			error : function(e) {
-				alert("网络错误，请重试");
-			},
-			success : function(data) {
-				if (data == 1) {
-					alert("添加成功！");
-					jump("/admin/user");
-					page_num = 1;
-					list(1);
-				}
-			}
-		});
+	
+	function find(){
+		list(1);
 	}
 
 	function removeAdmin(aid) {

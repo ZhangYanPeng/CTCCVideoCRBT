@@ -30,8 +30,8 @@ public class AdminController {
 
 	// 管理员列表加载
 	@RequestMapping(value = "/admin_list")
-	public @ResponseBody PageResults<Admin> adminList(String pageNo) {
-		return adminService.GetByPage(Integer.valueOf(pageNo));
+	public @ResponseBody PageResults<Admin> adminList(String pageNo, String findStr) {
+		return adminService.GetByPage(Integer.valueOf(pageNo), findStr);
 	}
 
 	// 管理员列表加载
@@ -52,4 +52,9 @@ public class AdminController {
 			return 0;
 		}
 	}
+	
+	
+	
+	
+	
 }

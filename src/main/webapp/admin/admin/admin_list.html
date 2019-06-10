@@ -11,6 +11,7 @@
 <script type="text/javascript" src="../js/init.js"></script>
 <script type="text/javascript" src="../js/common.js"></script>
 <script type="text/javascript" src="./js/admin_list.js"></script>
+
 </head>
 
 <body>
@@ -27,30 +28,41 @@
 				<div class="conform">
 					<form>
 						<div class="cfD">
-							<a href="./useradd.html">
-								<button class="userbtn" disabled="disabled">新增管理员</button>
+							<input class="userinput" id="findTarStr" type="text"
+								placeholder="输入要查询的内容" />-
+							<a href="javascript:find();"><button class="userbtn" disabled="disabled">查找</button></a>
+							<a margin-left="500px" href="./useradd.html">
+								<button class="userbtn admin_add" disabled="disabled">新增管理员</button>
 							</a>
 						</div>
 					</form>
 				</div>
-				<!-- user 表格 显示 -->
-				<div class="conShow">
-					<table id="adminlist" border="1" cellspacing="0" cellpadding="0">
-					</table>
-				</div>
-				<div class="paging">
-					<div class="pagination">
-						<a href="#" class="first" onclick="javascript:first();">&laquo;</a>
-						<a href="#" class="previous" onclick="javascript:previous();">&lsaquo;</a>
-						<input id="page_num" type="text" readonly="readonly" /> <a
-							href="#" class="next" onclick="javascript:next();">&rsaquo;</a> <a
-							href="#" class="last" onclick="javascript:last();">&raquo;</a>
-					</div>
+			</div>
+			<!-- 模糊查询页面end -->
+
+
+
+			<!-- user 表格 显示 -->
+			<div class="conShow">
+				<table id="adminlist" border="1" cellspacing="0" cellpadding="0">
+				</table>
+			</div>
+			<div class="paging">
+				<div class="pagination">
+					<a href="#" class="first" onclick="javascript:first();">&laquo;</a>
+					<a href="#" class="previous" onclick="javascript:previous();">&lsaquo;</a>
+					<input id="page_num" type="text" readonly="readonly" /> <a
+						href="#" class="next" onclick="javascript:next();">&rsaquo;</a> <a
+						href="#" class="last" onclick="javascript:last();">&raquo;</a>
 				</div>
 			</div>
-			<!-- user 表格 显示 end-->
 		</div>
-		<!-- user页面样式end -->
+		<!-- user 表格 显示 end-->
+	</div>
+	<!-- user页面样式end -->
+
+
+
 	</div>
 
 	<!-- 删除弹出框  end-->
