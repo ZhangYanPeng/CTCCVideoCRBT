@@ -25,9 +25,10 @@ public class Account {
 	@SequenceGenerator(name = "AccSeq", initialValue = 1, allocationSize = 1, sequenceName = "ACC_SEQUENCE")
 	private long usr_id; //*用户ID
 	private String usr_pwd; //用户密码（可能需要）
+	private String usr_idenfication; //用户识别号（可能需要）
 	private Date reg_date; //注册日期（可能需要）
 	private String usr_tel; //*用户号码
-	private int usr_status; //*账户状态
+	private int usr_status; //*账户状态//0：冻结；1：有效
 	
 	@ManyToOne
 	private Group group;
@@ -134,6 +135,14 @@ public class Account {
 
 	public void setUsrStatus(int usr_status) {
 		this.usr_status = usr_status;
+	}
+
+	public String getUsr_idenfication() {
+		return usr_idenfication;
+	}
+
+	public void setUsr_idenfication(String usr_idenfication) {
+		this.usr_idenfication = usr_idenfication;
 	}
 
 	public Set<Video> getOwner_videos() {
