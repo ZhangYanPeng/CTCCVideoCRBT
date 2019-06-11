@@ -66,7 +66,7 @@ function edit() {
 				alert("提交失败，请重试！");
 			}else{
 				alert("编辑成功！");
-				window.location.href = "./admin_list.html";
+				load_data(admin_id);
 			}
 		}
 	});
