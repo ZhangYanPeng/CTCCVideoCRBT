@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 
@@ -31,6 +32,8 @@ public class VideoType {
 	@JoinColumn(name = "type_video_type_id")
 	@JsonIgnore
 	private Set<Video> videos;
+	@Transient
+	private long related_video_num;
 
 	public VideoType(String type) {
 		// TODO Auto-generated constructor stub
@@ -54,14 +57,31 @@ public class VideoType {
 	}
 
 	public Set<Video> getVideos() {
+		UpadateInfo();
 		return videos;
 	}
 
 	public void setVideos(Set<Video> videos) {
 		this.videos = videos;
+		UpadateInfo();
 	}
 
 	public VideoType() {
 		super();
+	}
+
+	public long getRelated_video_num() {
+		return related_video_num;
+	}
+
+	public void setRelated_video_num(long related_video_num) {
+		this.related_video_num = related_video_num;
+	}
+	
+	public void UpadateInfo(){
+		related_video_num = 0;
+		if(videos != null){
+			related_video_num = videos.size();
+		}
 	}
 }

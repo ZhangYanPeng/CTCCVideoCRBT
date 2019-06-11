@@ -25,15 +25,15 @@ function list(p) {
 			alert("网络错误，请重试");
 		},
 		success : function(data) {
-			console.log(data);
 			total_num = data.pageCount;
 			page_num = p;
 			$("#page_num").val(p);
 
 			var tab_title = "<tr>"
 			+ "<td width='10%' class='tdColor tdC'>序号</td>"
-			+ "<td width='50%' class='tdColor'>视频类型</td>"
-			+ "<td width='40%' class='tdColor'>操作</td>"
+			+ "<td width='35%' class='tdColor'>视频类型</td>"
+			+ "<td width='35%' class='tdColor'>相关视频总数</td>"
+			+ "<td width='20%' class='tdColor'>操作</td>"
 			+ "	</tr>";
 			$("#video_type_list").html(tab_title);
 
@@ -44,9 +44,10 @@ function list(p) {
 						value.video_type_id);
 					var td_un = $('<td></td>').append(
 						value.type_name);
+					var td_num = $('<td></td>').append(
+						value.related_video_num);
 					var a_edit = $('<a></a>').attr(
-						'href',
-						"useradd.html?id="
+						'href',"video_type_edit.html?id="
 						+ value.video_type_id)
 						.append("<img class='operation' src='../img/update.png'></a>");
 					var td_op = $('<td></td>')
@@ -57,8 +58,7 @@ function list(p) {
 							+ ");' /></td>");
 					var tr = $('<tr></tr>').attr(
 						'height', "40px");
-					tr.append(td_id).append(td_un)
-					.append(td_op)
+					tr.append(td_id).append(td_un).append(td_num).append(td_op)
 					$("#video_type_list").append(tr);
 				});
 		}

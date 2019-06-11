@@ -40,13 +40,13 @@ public class VideoTypeServiceImpl implements IVideoTypeService {
 
 	@Override
 	@Transactional
-	public VideoType Edit(VideoType videoType) {
+	public int Edit(VideoType videoType) {
 		// TODO Auto-generated method stub
 		try{
 			videoTypeDAO.update(videoType);
-			return videoTypeDAO.get(videoType.getVideo_type_id());
+			return 1;
 		}catch(Exception e){
-			return videoType;
+			return 0;
 		}
 	}
 
@@ -67,6 +67,7 @@ public class VideoTypeServiceImpl implements IVideoTypeService {
 	public PageResults<VideoType> GetByPage(int pageNo, String findStr) {
 		// TODO Auto-generated method stub
 		try{
+			PageResults<VideoType> pr = null;
 			String hql = "from VideoType";
 			String countHql = "select COUNT(*) from VideoType";
 			if(findStr == null || findStr.equals("")){
