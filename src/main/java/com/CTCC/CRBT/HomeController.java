@@ -32,12 +32,12 @@ public class HomeController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/index")
-	public String home(Locale locale, Model model) {
+	public String home(Locale locale, Model model, HttpServletRequest request, HttpServletResponse response) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		String formattedDate = dateFormat.format(date);
-		model.addAttribute("serverTime", formattedDate);
+		model.addAttribute("serverTime", formattedDate);response.setContentType("text/html;charset=utf-8");
 		return "/log";
 	}
 

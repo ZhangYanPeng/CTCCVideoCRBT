@@ -47,7 +47,7 @@ public class AdminServiceImpl implements IAdminService {
 			adminDAO.update(admin);
 			return adminDAO.get(admin.getAdmin_id());
 		}catch(Exception e){
-			return null;
+			return admin;
 		}
 	}
 

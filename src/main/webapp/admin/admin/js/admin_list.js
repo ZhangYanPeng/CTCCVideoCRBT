@@ -11,7 +11,7 @@ function list(p) {
 		cache : false,
 		type : 'POST',
 		crossDomain : true,
-		url : "../admin_list",
+		url : "./admin_list",
 		data : {
 			pageNo : p,
 			findStr : fStr
@@ -21,7 +21,6 @@ function list(p) {
 		error : function(e) {
 			alert("网络错误，请重试");
 		},
-
 		success : function(data) {
 			console.log(data);
 			total_num = data.pageCount;
@@ -76,7 +75,7 @@ function valid(admin_id, valstate) {
 		cache : false,
 		type : 'POST',
 		crossDomain : true,
-		url : "../valid_admin",
+		url : "./valid_admin",
 		data : {
 			id : admin_id,
 			state : valstate,
@@ -89,64 +88,6 @@ function valid(admin_id, valstate) {
 		success : function(data) {
 			if (data == 1) {
 				list(page_num);
-			}
-		}
-	});
-}
-
-function edit() {
-	$.ajax({
-		sync : false,
-		cache : false,
-		type : 'POST',
-		crossDomain : true,
-		url : "add_admin",
-		data : {
-			username : $("#nun").val(),
-			password : $("#npd").val(),
-		},
-		dataType : "json",
-		contentType : "application/x-www-form-urlencoded;charset=utf-8",
-		error : function(e) {
-			alert("网络错误，请重试");
-		},
-		success : function(data) {
-			if (data == 1) {
-				alert("添加成功！");
-				jump("/admin/user");
-				page_num = 1;
-				list(1);
-			}
-		}
-	});
-}
-
-function save() {
-	if ($("#password").val() != $("#repassword").val()) {
-		alert("两次密码不一致，请检查！");
-		return;
-	}
-	$.ajax({
-		sync : false,
-		cache : false,
-		type : 'POST',
-		crossDomain : true,
-		url : "add_admin",
-		data : {
-			username : $("#nun").val(),
-			password : $("#npd").val(),
-		},
-		dataType : "json",
-		contentType : "application/x-www-form-urlencoded;charset=utf-8",
-		error : function(e) {
-			alert("网络错误，请重试");
-		},
-		success : function(data) {
-			if (data == 1) {
-				alert("添加成功！");
-				jump("/admin/user");
-				page_num = 1;
-				list(1);
 			}
 		}
 	});
@@ -166,7 +107,7 @@ function removeAdmin(aid) {
 		cache : false,
 		type : 'POST',
 		crossDomain : true,
-		url : "../delete_admin",
+		url : "./delete_admin",
 		data : {
 			id : aid
 		},

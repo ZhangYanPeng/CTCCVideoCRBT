@@ -12,7 +12,7 @@ import com.CTCC.CRBT.Entity.Admin;
 import com.CTCC.CRBT.Service.IAdminService;
 
 @Controller
-@RequestMapping("/admin")
+@RequestMapping("/admin/admin")
 public class AdminController {
 	@Autowired
 	IAdminService adminService;
