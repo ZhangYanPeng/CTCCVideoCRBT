@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>视频编辑</title>
+<link rel="stylesheet" type="text/css" href="../css/css.css" />
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<style type="text/css">
+	.bbD .bbDP .btn_ok {
+		width: 100px;
+		margin-top: 10px;
+		margin-right: 25px;
+		font-size: 16px;
+		margin-bottom: 10px;
+	}
+	.bbD .bbDP .btn_upload{
+		width: 100px;
+		margin-top: 10px;
+		margin-right: 25px;
+		margin-left: 25px;
+		font-size: 16px;
+		margin-bottom: 10px;
+	}
+</style>
+</head>
+<body>
+	<div id="pageAll">
+		<div class="pageTop">
+			<div class="page">
+				<img src="../img/coin02.png" /><span><a href="#">首页</a>&nbsp;-&nbsp;<a href="#">视频管理</a>&nbsp;-</span>&nbsp;视频编辑
+			</div>
+		</div>
+		<div class="page ">
+			<!-- 会员注册页面样式 -->
+			<div class="banneradd bor">
+				<div class="baTopNo">
+					<span>视频编辑</span>
+				</div>
+				<div class="baBody">
+					<table width="1000px" border="0" cellpadding="0" cellspacing="0" >
+						<tr>
+							<td width="50%">
+								<input id="id" type="hidden" class="input3" />
+								<div class="bbD">
+									&nbsp;&nbsp;&nbsp;&nbsp;视频名称：<input id="name" type="text" class="input3" />
+								</div>
+
+								<div class="bbD">
+									&nbsp;&nbsp;&nbsp;&nbsp;视频分类：<select id="type" class="input3"></select>
+								</div>
+
+								<div class="bbD">
+									&nbsp;&nbsp;&nbsp;&nbsp;视频描述：<input id="desc" type="text" class="input3" />
+								</div>
+
+								<div class="bbD">
+									&nbsp;&nbsp;&nbsp;&nbsp;视频标签：<input id="tags" type="text" class="input3" />
+									<p> &emsp;&emsp;&emsp;&emsp;(&nbsp;*不同标签间请以分号&nbsp;;&nbsp;间隔&nbsp;)</p>
+								</div>
+
+								<div class="bbD">
+									&nbsp;&nbsp;&nbsp;&nbsp;定&emsp;&emsp;价：<input id="price" type="text" class="input3" width="100px" /> 
+								</div>
+								<br>
+							</td>
+							<td width="50%"> 
+								<video src="http://tb-video.bdstatic.com/tieba-smallvideo-transcode/1476366_da25600294056e7d633e14ab115b4df0_0.mp4" controls="controls" height="300px" ></video>
+
+								<div class="bbD">
+									<p class="bbDP">
+										<button class="btn_ok btn_yes btn_upload" href="#" onclick="javascript:save();">上传视频</button>
+									</p>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<div class="bbD">
+									<p class="bbDP">
+										<button class="btn_ok btn_yes" href="#" onclick="javascript:save();">保存</button>
+										<a class="btn_ok btn_no" href="user.html">取消</a>
+									</p>
+								</div>
+							</td>
+						</tr>
+					</table>
+					
+				</div>
+			</div>
+
+			<!-- 会员注册页面样式end -->
+		</div>
+	</div>
+</body>
+</html>

@@ -20,6 +20,7 @@ var page_num = 1;
 				alert("网络错误，请重试");
 			},
 			success : function(data) {
+				console.log(data);
 				total_num = data.pageCount;
 				page_num = p;
 				$("#page_num").val(p);

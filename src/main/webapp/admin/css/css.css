@@ -246,21 +246,6 @@ td {
 	
 }
 
-.bbD .bbDP .btn_ok {
-	display: inline-block;
-	width: 100px;
-	height: 40px;
-	line-height: 40px;
-	background-color: #3695cc;
-	color: #fff;
-	margin-top: 50px;
-	margin-right: 25px;
-	font-size: 16px;
-	cursor: pointer;
-	text-align: center;
-	margin-bottom: 160px;
-	border: none;
-}
 
 .bbD .bbDP .btn_no {
 	color: #333;
@@ -270,6 +255,20 @@ td {
 
 .bbD .bbDP .btn_yes {
 	margin-left: 66px;
+}
+
+.bbD .bbDP .btn_ok {
+	display: inline-block;
+	width: 100px;
+	background-color: #3695cc;
+	color: #fff;
+	margin-top: 10px;
+	margin-right: 25px;
+	font-size: 16px;
+	cursor: pointer;
+	text-align: center;
+	margin-bottom: 10px;
+	border: none;
 }
 
 .bbD .bbDd {
