@@ -11,7 +11,7 @@ function load_data(aid){
 		cache : false,
 		type : 'POST',
 		crossDomain : true,
-		url : "../admin_load",
+		url : "./admin_load",
 		data : {
 			id : aid
 		},
@@ -46,7 +46,7 @@ function edit() {
 		cache : false,
 		type : 'POST',
 		crossDomain : true,
-		url : "../admin_edit",
+		url : "./admin_edit",
 		data : {
 			admin_id : $("#id").val(),
 			admin_name : $("#username").val(),

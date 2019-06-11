@@ -9,4 +9,5 @@ public interface IVideoTypeService {
 	public VideoType Edit(VideoType videoType);
 	public int Delete(long id);
 	public PageResults<VideoType> GetByPage(int pageNo, String findStr);
+	public VideoType getByName(String type);
 }

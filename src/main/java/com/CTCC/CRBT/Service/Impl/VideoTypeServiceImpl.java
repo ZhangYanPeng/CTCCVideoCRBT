@@ -67,10 +67,31 @@ public class VideoTypeServiceImpl implements IVideoTypeService {
 	public PageResults<VideoType> GetByPage(int pageNo, String findStr) {
 		// TODO Auto-generated method stub
 		try{
-			String hql = "from VideoType where type_name like ?";
-			String countHql = "select COUNT(*) from VideoType where type_name like ?";
-			Object[] params = {findStr};
-			return videoTypeDAO.findPageByFetchedHql(hql, countHql, pageNo, Constant.PAGESIZE, params);
+			String hql = "from VideoType";
+			String countHql = "select COUNT(*) from VideoType";
+			if(findStr == null || findStr.equals("")){
+				Object[] params = {};
+				return videoTypeDAO.findPageByFetchedHql(hql, countHql, pageNo, Constant.PAGESIZE, params);	
+			}else{
+				hql += " where type_name like ?";
+				countHql += " where type_name like ?";
+				Object[] params = {findStr};
+				return videoTypeDAO.findPageByFetchedHql(hql, countHql, pageNo, Constant.PAGESIZE, params);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	@Transactional
+	public VideoType getByName(String type) {
+		// TODO Auto-generated method stub
+		try{
+			String hql = "from VideoType where type_name = ?";
+			Object[] params = {type};
+			return videoTypeDAO.getByHQL(hql, params);
 		}catch(Exception e){
 			return null;
 		}

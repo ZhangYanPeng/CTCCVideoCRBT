@@ -10,7 +10,7 @@
 <!-- <script type="text/javascript" src="js/page.js" ></script> -->
 <script type="text/javascript" src="../js/init.js"></script>
 <script type="text/javascript" src="../js/common.js"></script>
-<script type="text/javascript" src="./js/video_list.js"></script>
+<script type="text/javascript" src="./js/video_type_list.js"></script>
 <style type="text/css">
 	.paging{
 		height: 50px;
@@ -34,14 +34,14 @@
 				<div class="conform">
 					<form>
 						<div class="cfD">
-							<input class="userinput" id="nun" type="text" placeholder="输入要查询的内容" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-
+							<input class="userinput" id="findstr" type="text" placeholder="输入要查询的内容" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-
 							<button class="userbtn" disabled="disabled">查找</button>
 						</div>
 					</form>
 				</div>
 				<!-- user 表格 显示 -->
 				<div class="conShow">
-					<table id="video_type_list" border="1" cellspacing="0" cellpadding="0">
+					<table width="1000px" id="video_type_list" border="1" cellspacing="0" cellpadding="0">
 					</table>
 				</div>
 				<div class="paging">
@@ -57,8 +57,10 @@
 				<div class="conform">
 					<form>
 						<div class="cfD">
-							<input class="userinput" id="findstr" type="text" placeholder="输入新增视频类型名称" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-
-							<button class="userbtn" disabled="disabled">确认新增</button>
+							<input class="userinput" id="newTypeName" type="text" placeholder="输入新增视频类型名称" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-
+							<a href="javascript:save();">
+								<button class="userbtn" disabled="disabled">确认新增</button>
+							</a>
 						</div>
 					</form>
 				</div>
