@@ -17,16 +17,6 @@ public class AdminController {
 	@Autowired
 	IAdminService adminService;
 
-	// 管理员登陆
-	@RequestMapping(value = "/login")
-	public @ResponseBody Admin adminLogin(String username, String password) {
-		Admin admin = new Admin();
-		admin.setAdmin_name(username);
-		admin.setAdmin_pwd(password);
-		admin = adminService.Login(admin);
-		return admin;
-	}
-
 	// 管理员列表加载
 	@RequestMapping(value = "/admin_list")
 	public @ResponseBody PageResults<Admin> adminList(String pageNo, String findStr) {
