@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -27,7 +28,10 @@ public class Account {
 	private String usr_pwd; //用户密码（可能需要）
 	private String usr_idenfication; //用户识别号（可能需要）
 	private Date reg_date; //注册日期（可能需要）
+	
+	@Column( unique=true, nullable=false)
 	private String usr_tel; //*用户号码
+	
 	private int usr_status; //*账户状态//0：冻结；1：有效
 	
 	@ManyToOne
