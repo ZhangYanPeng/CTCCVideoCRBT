@@ -30,4 +30,10 @@ public class VideoController {
 			videoTypeService.Add(new VideoType(type));
 		return 1;
 	}
+	
+	// 视频类型列表加载
+	@RequestMapping(value = "/delete_video_type")
+	public @ResponseBody int delete_video_type(String id) {
+		return videoTypeService.Delete(Long.valueOf(id));
+	}
 }
