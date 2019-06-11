@@ -4,6 +4,10 @@ $(document).ready(function() {
 	list(1);
 });
 
+function find(){
+	list(1);
+}
+
 function list(p) {
 	$.ajax({
 		sync : false,
@@ -48,7 +52,7 @@ function list(p) {
 					var td_op = $('<td></td>')
 						.append(a_edit)
 						.append(
-							"<img class='operation delban' src='../img/delete.png' onclick='javascript:remove("
+							"<img class='operation delban' src='../img/delete.png' onclick='javascript:removeVideType("
 							+ value.video_type_id
 							+ ");' /></td>");
 					var tr = $('<tr></tr>').attr(
@@ -89,7 +93,7 @@ function save() {
 	});
 }
 
-function remove(vtid) {
+function removeVideType(vtid) {
 	var r=confirm("是否确认删除？")
 	if (r!=true)
 	{
@@ -112,7 +116,6 @@ function remove(vtid) {
 		success : function(data) {
 			if (data == true) {
 				list(1);
-				page_num = 1;
 			}
 		}
 	});
