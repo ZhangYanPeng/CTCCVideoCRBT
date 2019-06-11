@@ -9,5 +9,6 @@ public interface IAdminService {
 	public Admin Edit(Admin admin);
 	public Admin Login(Admin admin);
 	public int Delete(long id);
-	public PageResults<Admin> GetByPage(int pageNo);
+	public PageResults<Admin> GetByPage(int pageNo, String findStr);
+	public Admin validAdminName(String admin_name);
 }
