@@ -90,8 +90,8 @@ public class AccountServiceImpl implements IAccountService {
 	public Account validAccountTel(String usr_tel) {
 		// TODO Auto-generated method stub
 		try{
-			String hql = "from Admin where usr_tel = ?";
-			Object[] objs = {Long.valueOf(usr_tel)};
+			String hql = "from Account where usr_tel = ?";
+			Object[] objs = {usr_tel};
 			return userDAO.getByHQL(hql, objs);
 		}catch(Exception e){
 			return null;

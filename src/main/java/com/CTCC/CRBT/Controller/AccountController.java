@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.CTCC.CRBT.DAO.PageResults;
 import com.CTCC.CRBT.Entity.Account;
+import com.CTCC.CRBT.Entity.Admin;
 import com.CTCC.CRBT.Service.IAccountService;
 
 @Controller
@@ -25,17 +26,17 @@ public class AccountController {
 	public @ResponseBody int user_add(String usr_tel) {
 		Account user = new Account();
 		user.setUsr_tel(usr_tel);
-		if( ValidAccountInfo(user) == 0)
+		if (ValidAccountInfo(user) == 0)
 			return -1;
 		return userService.Add(user);
 	}
-	
+
 	@RequestMapping(value = "/user_edit")
 	public @ResponseBody Account user_edit(String usr_id, String usr_tel) {
 		Account user = new Account();
 		user = userService.Get(Long.valueOf(usr_id));
 		user.setUsr_tel(usr_tel);
-		if( ValidAccountInfo(user) == 0) {
+		if (ValidAccountInfo(user) == 0) {
 			Account usr = new Account();
 			usr.setUsr_id(-1);
 			return usr;
@@ -45,7 +46,7 @@ public class AccountController {
 
 	private int ValidAccountInfo(Account user) {
 		// TODO Auto-generated method stub
-		if( userService.validAccountTel(user.getUsr_tel()) != null)
+		if (userService.validAccountTel(user.getUsr_tel()) != null)
 			return 0;
 		return 1;
 	}
