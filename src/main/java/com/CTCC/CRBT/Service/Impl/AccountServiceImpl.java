@@ -54,14 +54,16 @@ public class AccountServiceImpl implements IAccountService {
 	@Override
 	@Transactional
 	public PageResults<Account> GetByPage(int pageNo, String findStr) {
+		System.err.println(pageNo);
+		System.err.println(findStr);
 		// TODO Auto-generated method stub
 		try{
 			String hql = "from Account";
 			String countHql = "select COUNT(*) from Account";
 			
 			if(findStr != "") {
-				hql += " where ( usr_tel like ?";
-				countHql += " where ( usr_tel like ?";
+				hql += " where usr_tel like ?";
+				countHql += " where usr_tel like ?";
 				Object[] objs = {"%"+findStr+"%"};
 				PageResults<Account> pr = userDAO.findPageByFetchedHql(hql, countHql, pageNo, Constant.PAGESIZE, objs);
 				return pr;
