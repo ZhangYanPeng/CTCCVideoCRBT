@@ -1,14 +1,14 @@
 var page_num = 1;
 	var total_num = 0;
 	$(document).ready(function() {
-		list(1);
+		//list(1);
 	});
 
 	function list(p) {
 		$.ajax({
 			sync : false,
 			cache : false,
-			type : 'POST',
+			type : 'GET',
 			crossDomain : true,
 			url : "../admin_list",
 			data : {

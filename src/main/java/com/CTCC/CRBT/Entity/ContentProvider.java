@@ -3,6 +3,7 @@ package com.CTCC.CRBT.Entity;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -23,8 +24,11 @@ public class ContentProvider {
 	@SequenceGenerator(name = "ContentProviderSeq", initialValue = 1, allocationSize = 1, sequenceName = "CONTENT_PROVIDER_SEQUENCE")
 	private long cp_id;//内容提供商标识
 	
+	@Column( unique=true, nullable=false)
 	private String cp_name;//CP账号名
+	@Column( unique=false, nullable=false)
 	private String cp_pwd;//CP账号密码
+	@Column( unique=true, nullable=false)
 	private String company;//CP公司名
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
