@@ -42,7 +42,7 @@ function list(p) {
 				var a_edit = $('<a></a>').attr('href',"user_edit.html?id="+ value.usr_id);
 				a_edit.append("<img class='operation' src='../img/update.png'></a>");
 				var td_op = $('<td></td>').append(a_edit)
-				.append("<img class='operation delban' src='../img/delete.png' onclick='javascript:removeAdmin("+ value.admin_id+ ");' /></td>");
+				.append("<img class='operation delban' src='../img/delete.png' onclick='javascript:removeAccount("+ value.usr_id+ ");' /></td>");
 				var tr = $('<tr></tr>').attr('height',"40px");
 				tr.append(td_id).append(td_tel).append(td_op);
 				$("#userlist").append(tr);
@@ -55,13 +55,9 @@ function find(){
 	list(1);
 }
 
-function removeAdmin(aid) {
+function removeAccount(aid) {
 	var r = confirm("是否确认删除？")
 	if (r != true) {
-		return;
-	}
-	if (aid == '1') {
-		alert("超级管理员无法删除！");
 		return;
 	}
 	$.ajax({
@@ -69,7 +65,7 @@ function removeAdmin(aid) {
 		cache : false,
 		type : 'POST',
 		crossDomain : true,
-		url : "./delete_admin",
+		url : "./delete_user",	
 		data : {
 			id : aid
 		},
@@ -81,7 +77,7 @@ function removeAdmin(aid) {
 		success : function(data) {
 			if (data == true) {
 				alert("删除成功！");
-				window.location.href = "./admin_list.html";
+				list(1);
 			}
 		}
 	});
