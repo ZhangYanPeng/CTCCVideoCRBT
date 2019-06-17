@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>添加内容提供商信息</title>
+<link rel="stylesheet" type="text/css" href="../css/css.css" />
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="./js/contentProvider_add.js"></script>
+
+</head>
+<body>
+	<div id="pageAll">
+		<div class="pageTop">
+			<div class="page">
+				<img src="../img/coin02.png" /><span><a href="#">首页</a>&nbsp;-&nbsp;<a
+					href="#">网站管理</a>&nbsp;-</span>&nbsp;添加用户
+			</div>
+		</div>
+		<div class="page ">
+			<!-- 用户添加页面样式 -->
+			<div class="banneradd bor">
+				<div class="baTopNo">
+					<span>添加用户</span>
+				</div>
+				<div class="baBody">
+					<input id="id" type="hidden" class="input3" />
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;公司名： <input id="company" type="text"
+							class="input3" />
+					</div>
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;公司账号： <input id="cpname" type="text"
+							class="input3" />
+					</div>
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码：<input id="password"
+							type="password" class="input3" />
+					</div>
+					
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重复密码：<input id="repassword"
+							type="password" class="input3" />
+					</div>
+					
+					<div class="bbD">
+						<p class="bbDP">
+							<button class="btn_ok btn_yes" href="#"
+								onclick="javascript:save();">提交</button>
+							<a class="btn_ok btn_no" href="./contentProvider_list.html">取消</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<!-- 用户添加页面样式end -->
+		</div>
+	</div>
+</body>
+</html>
