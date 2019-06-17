@@ -22,9 +22,10 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @Table(name="T_ACCOUNT")
 public class Account {
 	@Id    
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "AccSeq")
-	@SequenceGenerator(name = "AccSeq", initialValue = 1, allocationSize = 1, sequenceName = "ACC_SEQUENCE")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "AccSeq")    
+	@SequenceGenerator(name = "AccSeq", initialValue = 1, allocationSize = 1, sequenceName = "ACCOUNT_SEQUENCE")
 	private long usr_id; //*用户ID
+	
 	private String usr_pwd; //用户密码（可能需要）
 	private String usr_idenfication; //用户识别号（可能需要）
 	private Date reg_date; //注册日期（可能需要）
