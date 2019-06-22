@@ -39,5 +39,4 @@
 		<url-pattern>/assets/*"</url-pattern>
 		<url-pattern>/images/*</url-pattern>
 	</servlet-mapping>
-
 </web-app>

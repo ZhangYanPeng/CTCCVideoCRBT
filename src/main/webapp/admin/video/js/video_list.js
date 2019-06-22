@@ -1,194 +1,117 @@
 var page_num = 1;
-	var total_num = 0;
-	$(document).ready(function() {
-		//list(1);
-	});
+var total_num = 0;
+var i = 0;
+$(document).ready(function() {
+	list(1);
+});
 
-	function list(p) {
-		$.ajax({
-			sync : false,
-			cache : false,
-			type : 'GET',
-			crossDomain : true,
-			url : "../admin_list",
-			data : {
-				pageNo : p
-			},
-			dataType : "json",
-			contentType : "application/x-www-form-urlencoded; charset=utf-8",
-			error : function(e) {
-				alert("网络错误，请重试");
-			},
-			success : function(data) {
-				console.log(data);
-				total_num = data.pageCount;
-				page_num = p;
-				$("#page_num").val(p);
+function list(p) {
+	var fStr = $("#findTarStr").val();
+	$.ajax({
+		sync : false,
+		cache : false,
+		type : 'POST',
+		crossDomain : true,
+		url : "./video_list",
+		data : {
+			pageNo : p,
+			findStr : fStr
+		},
+		dataType : "json",
+		contentType : "application/x-www-form-urlencoded; charset=utf-8",
+		error : function(e) {
+			alert("网络错误，请重试");
+		},
+		success : function(data) {
+			console.log(data);
+			total_num = data.pageCount;
+			page_num = p;
+			$("#page_num").val(p);
 
-				var tab_title = "<tr>"
-				+ "<td width='30px' class='tdColor tdC'>序号</td>"
-				+ "<td width='200px' class='tdColor'>用户名</td>"
-				+ "<td width='200px' class='tdColor'>密码</td>"
-				+ "<td width='500px' class='tdColor'>详细信息</td>"
-				+ "<td width='150px' class='tdColor'>账户状态</td>"
-				+ "<td width='60px' class='tdColor'>操作</td>"
-				+ "	</tr>";
-				$("#adminlist").html(tab_title);
-
-				$.each(
-					data.results,
-					function(index, value) {
-						var td_id = $('<td></td>').append(
-							value.admin_id);
-						var td_un = $('<td></td>').append(
-							value.admin_name);
-						var td_pd = $('<td></td>').append(
-							value.admin_pwd);
-						var td_desc = $('<td></td>').append(
-							value.admin_desc);
-						var td_state= $('<td></td>');
-						if(value.valid_state == 1){
-							td_state.append("正常").append($('<a></a>').append("（冻结该账户）").attr('href','javascript:valid('+value.admin_id +',0);'));
-						}else{
-							td_state.append("冻结").append($('<a></a>').append("（解除冻结）").attr('href','javascript:valid('+value.admin_id +',1);'));
-						}
-						var a_edit = $('<a></a>').attr(
-							'href',
-							"useradd.html?id="
-							+ value.admin_id);
-						a_edit
-						.append("<img class='operation' src='../img/update.png'></a>");
-						var td_op = $('<td></td>')
-						.append(a_edit)
-						.append(
-							"<img class='operation delban' src='../img/delete.png' onclick='javascript:removeAdmin("
-							+ value.admin_id
-							+ ");' /></td>");
-						var tr = $('<tr></tr>').attr(
-							'height', "40px");
-						tr.append(td_id).append(td_un)
-						.append(td_pd)
-						.append(td_desc)
-						.append(td_state)
-						.append(td_op);
-						$("#adminlist").append(tr);
+			$("#videolist").html("");
+			for (i = 0; i < data.totalCount / 4; i++) {
+				var tr = $('<tr></tr>').attr('height', "40px");
+				for (j = 0; j < 4 && (4 * i + j) < data.totalCount; j++) {
+					console.log(data.results[4 * i + j].video_path);
+					var td_video = $('<video muted></video>').attr({
+						'src' : data.results[4 * i + j].video_path,
+						"controls" : "controls",
+						"autoplay" : "autoplay",
+						"loop" : "loop",
+						"width" : "250px",
+						"height" : "250px",
+						"allowFullScreen" : 'true',
+						"quality" : 'high',
+						"align" : 'middle',
+						"allowScriptAccess" : 'always'
 					});
-			}
-		});
-	}
-
-	function valid(admin_id, valstate) {
-		$.ajax({
-			sync : false,
-			cache : false,
-			type : 'POST',
-			crossDomain : true,
-			url : "../valid_admin",
-			data : {
-				id : admin_id,
-				state : valstate,
-			},
-			dataType : "json",
-			contentType : "application/x-www-form-urlencoded;charset=utf-8",
-			error : function(e) {
-				alert("网络错误，请重试");
-			},
-			success : function(data) {
-				if (data == 1) {
-					list(page_num);
+					var td_edit = $('<a></a>')
+							.attr("href", "./video_edit.html");
+					var td_id = $('<p></p>').append(
+							data.results[4 * i + j].video_name);
+					var td_name = $('<p></p>').append(
+							data.results[4 * i + j].video_id);
+					td_edit.append(td_id).append(td_name);
+					var td = $('<td></td>').append(td_video).append(td_edit);
+					tr.append(td);
+					$("#videolist").append(tr);
 				}
 			}
-		});
-	}
 
-	function save() {
-		if ($("#password").val() != $("#repassword").val()) {
-			alert("两次密码不一致，请检查！");
-			return;
+			// $.each(data.results,function(index, value) {
+			// var td_video = $('<video></video>').attr({
+			// 'src' : value.video_path,
+			// "controls" : "controls",
+			// "autoplay" : "autoplay",
+			// "width" : "250px",
+			// "height" : "250px",
+			// "allowFullScreen" : 'true',
+			// "quality" : 'high',
+			// "align" : 'middle',
+			// "allowScriptAccess" : 'always'
+			// });
+			// var td_edit = $('<a></a>').attr("href", "./video_edit.html");
+			// var td_id = $('<p></p>').append(value.video_name);
+			// var td_name = $('<p></p>').append(value.video_id);
+			// td_edit.append(td_id).append(td_name);
+			// var td = $('<td></td>').append(td_video).append(td_edit);
+			// var tr = $('<tr></tr>').attr('height', "40px");
+			// tr.append(td);
+			// $("#videolist").append(tr);
+			// });
 		}
-		$.ajax({
-			sync : false,
-			cache : false,
-			type : 'POST',
-			crossDomain : true,
-			url : "add_admin",
-			data : {
-				username : $("#nun").val(),
-				password : $("#npd").val(),
-			},
-			dataType : "json",
-			contentType : "application/x-www-form-urlencoded;charset=utf-8",
-			error : function(e) {
-				alert("网络错误，请重试");
-			},
-			success : function(data) {
-				if (data == 1) {
-					alert("添加成功！");
-					jump("/admin/user");
-					page_num = 1;
-					list(1);
-				}
-			}
-		});
-	}
+	});
+}
 
-	function removeAdmin(aid) {
-		var r=confirm("是否确认删除？")
-		if (r!=true)
-		{
-			return;
-		}
-		if (aid == '1') {
-			alert("超级管理员无法删除！");
-			return;
-		}
-		$.ajax({
-			sync : false,
-			cache : false,
-			type : 'POST',
-			crossDomain : true,
-			url : "delete_admin",
-			data : {
-				id : aid
-			},
-			dataType : "json",
-			contentType : "application/x-www-form-urlencoded;charset=utf-8",
-			error : function(e) {
-				alert("网络错误，请重试");
-			},
-			success : function(data) {
-				if (data == true) {
-					list(1);
-					page_num = 1;
-				}
-			}
-		});
-	}
+function find() {
+	console.log("3525252542");
+	list(1);
+}
 
-	function first() {
-		if (page_num == 1)
-			return;
-		page_num = 1;
-		list(1);
-	}
+function first() {
+	if (page_num == 1)
+		return;
+	page_num = 1;
+	list(1);
+}
 
-	function previous() {
-		if (page_num == 1)
-			return;
-		page_num = page_num - 1;
-		list(page_num);
-	}
+function previous() {
+	if (page_num == 1)
+		return;
+	page_num = page_num - 1;
+	list(page_num);
+}
 
-	function next() {
-		if (page_num == total_num)
-			return;
-		page_num = page_num + 1;
-		list(page_num);
-	}
+function next() {
+	if (page_num == total_num)
+		return;
+	page_num = page_num + 1;
+	list(page_num);
+}
 
-	function last() {
-		if (page_num == total_num)
-			return;
-		page_num = total_num;
-		list(page_num);
-	}
+function last() {
+	if (page_num == total_num)
+		return;
+	page_num = total_num;
+	list(page_num);
+}
