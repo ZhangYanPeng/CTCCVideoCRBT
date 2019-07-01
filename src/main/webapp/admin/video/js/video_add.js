@@ -32,7 +32,7 @@ $(document).ready(function() {
 // 选择本地视频文件
 function fileSelected() {
 	var file = document.getElementById('fileUpload').files[0];
-    console.log(file);
+    //console.log(file);
     if (file) {
         var fileSize = 0;
         if (file.size > 1024 * 1024)
@@ -43,7 +43,7 @@ function fileSelected() {
         document.getElementById('fileSize').innerHTML = '文件大小: ' + fileSize;
         document.getElementById('fileType').innerHTML = '文件类型: ' + file.type;
         var url = URL.createObjectURL(file);
-        console.log(url);
+        //console.log(url);
         // 视频信息赋值
         var formatindex=(file.type).lastIndexOf("/");
         var filenameExtension = (file.type).slice(formatindex+1);
@@ -88,7 +88,7 @@ function uploadFile() {
 
 // 删除本次上传到FTP文件服务器的视频文件
 function uploadCanceled() {
-	console.log(pathname);
+	//console.log(pathname);
 	if(pathname!=null){
 		$.ajax({
 			sync : false,

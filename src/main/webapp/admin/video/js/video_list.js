@@ -23,7 +23,7 @@ function list(p) {
 			alert("网络错误，请重试");
 		},
 		success : function(data) {
-			console.log(data);
+			//console.log(data);
 			total_num = data.pageCount;
 			page_num = p;
 			$("#page_num").val(p);
@@ -32,7 +32,7 @@ function list(p) {
 			for (i = 0; i < data.totalCount / 4; i++) {
 				var tr = $('<tr></tr>').attr('height', "40px");
 				for (j = 0; j < 4 && (4 * i + j) < data.totalCount; j++) {
-					console.log(data.results[4 * i + j].video_path);
+					//console.log(data.results[4 * i + j].video_path);
 					var td_video = $('<video muted></video>').attr({
 						'src' : data.results[4 * i + j].video_path,
 						"controls" : "controls",
