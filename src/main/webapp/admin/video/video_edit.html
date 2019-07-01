@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="../css/css.css" />
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="./js/video_edit.js"></script>
 <style type="text/css">
 	.bbD .bbDP .btn_ok {
 		width: 100px;
@@ -40,46 +41,42 @@
 				<div class="baBody">
 					<table width="1000px" border="0" cellpadding="0" cellspacing="0" >
 						<tr>
-							<td width="50%">
+							<td width="65%">
 								<input id="id" type="hidden" class="input3" />
 								<div class="bbD">
-									&nbsp;&nbsp;&nbsp;&nbsp;视频名称：<input id="name" type="text" class="input3" />
+									&nbsp;&nbsp;&nbsp;&nbsp;视频名称：<input id="videoname" type="text" class="input4" />
 								</div>
 
 								<div class="bbD">
-									&nbsp;&nbsp;&nbsp;&nbsp;视频分类：<select id="type" class="input3"></select>
+									&nbsp;&nbsp;&nbsp;&nbsp;视频分类：<select id="videotype" class="input4"></select>
 								</div>
 
 								<div class="bbD">
-									&nbsp;&nbsp;&nbsp;&nbsp;视频描述：<input id="desc" type="text" class="input3" />
+									&nbsp;&nbsp;&nbsp;&nbsp;视频描述：
+									<textarea id="videodesc" class="input4" style="height: 150px" rows="5" cols="7" wrap="no/off"></textarea>
 								</div>
 
-								<div class="bbD">
-									&nbsp;&nbsp;&nbsp;&nbsp;视频标签：<input id="tags" type="text" class="input3" />
-									<p> &emsp;&emsp;&emsp;&emsp;(&nbsp;*不同标签间请以分号&nbsp;;&nbsp;间隔&nbsp;)</p>
-								</div>
+<!-- 								<div class="bbD"> -->
+<!-- 									&nbsp;&nbsp;&nbsp;&nbsp;视频标签：<input id="tags" type="text" class="input3" /> -->
+<!-- 									<p> &emsp;&emsp;&emsp;&emsp;(&nbsp;*不同标签间请以分号&nbsp;;&nbsp;间隔&nbsp;)</p> -->
+<!-- 								</div> -->
 
 								<div class="bbD">
-									&nbsp;&nbsp;&nbsp;&nbsp;定&emsp;&emsp;价：<input id="price" type="text" class="input3" width="100px" /> 
+									&nbsp;&nbsp;&nbsp;&nbsp;定&emsp;&emsp;价：<input id="videoprice" type="text" class="input4" width="100px" /> 
 								</div>
 								<br>
 							</td>
-							<td width="50%"> 
-								<video src="http://tb-video.bdstatic.com/tieba-smallvideo-transcode/1476366_da25600294056e7d633e14ab115b4df0_0.mp4" controls="controls" height="300px" ></video>
-
-								<div class="bbD">
-									<p class="bbDP">
-										<button class="btn_ok btn_yes btn_upload" href="#" onclick="javascript:save();">上传视频</button>
-									</p>
-								</div>
+							<td width="35%"> 
+								<video id="videoedit" controls="controls"
+									width="300px" height="400px"></video>
 							</td>
 						</tr>
 						<tr>
 							<td colspan="2">
 								<div class="bbD">
 									<p class="bbDP">
-										<button class="btn_ok btn_yes" href="#" onclick="javascript:save();">保存</button>
-										<a class="btn_ok btn_no" href="user.html">取消</a>
+										<button class="btn_ok btn_yes" href="#" onclick="javascript:edit();">保存</button>
+										<a class="btn_ok btn_no" href="video_list.html">取消</a>
 									</p>
 								</div>
 							</td>

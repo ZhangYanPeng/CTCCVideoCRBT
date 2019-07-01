@@ -10,7 +10,7 @@ function save() {
 		crossDomain : true,
 		url : "./user_add",
 		data : {
-			usr_tel : $("#usertel").val(),
+			usr_tel : $("#usertel").val()
 		},
 		dataType : "json",
 		contentType : "application/x-www-form-urlencoded;charset=utf-8",

@@ -1,5 +1,7 @@
 package com.CTCC.CRBT.Service;
 
+import java.util.List;
+
 import com.CTCC.CRBT.DAO.PageResults;
 import com.CTCC.CRBT.Entity.VideoType;
 
@@ -10,4 +12,5 @@ public interface IVideoTypeService {
 	public int Delete(long id);
 	public PageResults<VideoType> GetByPage(int pageNo, String findStr);
 	public VideoType getByName(String type);
+	public List<String> GetAllVideoType();
 }

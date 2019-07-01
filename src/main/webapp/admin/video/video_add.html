@@ -6,25 +6,8 @@
 <link rel="stylesheet" type="text/css" href="../css/css.css" />
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="../js/common.js"></script>
+<!-- <script type="text/javascript" src="./js/video_upload.js"></script> -->
 <script type="text/javascript" src="./js/video_add.js"></script>
-<style type="text/css">
-.bbD .bbDP .btn_ok {
-	width: 100px;
-	margin-top: 10px;
-	margin-right: 25px;
-	font-size: 16px;
-	margin-bottom: 10px;
-}
-
-.bbD .bbDP .btn_upload {
-	width: 100px;
-	margin-top: 10px;
-	margin-right: 25px;
-	margin-left: 25px;
-	font-size: 16px;
-	margin-bottom: 10px;
-}
-</style>
 </head>
 <body>
 	<div id="pageAll">
@@ -43,53 +26,62 @@
 				<div class="baBody">
 					<table width="1000px" border="0" cellpadding="0" cellspacing="0">
 						<tr>
-							<td width="50%"><input id="id" type="hidden" class="input3" />
+							<td width="60%"><input id="id" type="hidden" class="input4" />
 								<div class="bbD">
-									&nbsp;&nbsp;&nbsp;&nbsp;视频名称：<input id="videoname" type="text"
-										class="input3" />
+									视频名称：<input id="videoname" type="text" class="input4" />
 								</div>
 								<div class="bbD">
-									&nbsp;&nbsp;&nbsp;&nbsp;视频分类：<select id="videotype"
-										class="input3"></select>
+									视频格式：<input disabled="true" id="videoformat" type="text"
+										class="input4" />
 								</div>
 								<div class="bbD">
-									&nbsp;&nbsp;&nbsp;&nbsp;定&emsp;&emsp;价：<input id="videoprice"
-										type="text" class="input3" width="100px" height="300px" />
+									视频分类：<select id="videotype" class="input4"></select>
 								</div>
 								<div class="bbD">
-									&nbsp;&nbsp;&nbsp;&nbsp;视频描述：<input id="videodesc" type="text"
-										class="input3" style="height:200px;line-height:200px" />
+									定&emsp;&emsp;价：<input id="videoprice" type="text"
+										class="input4">
+								</div>
+								<div class="bbD">
+									视频描述：
+									<textarea id="videodesc" class="input4" style="height: 200px" cols="7" wrap="off"></textarea>
+<!-- 									<input id="videodesc" type="text" class="input4" style="height: 300px"/> -->
 								</div></td>
-							<td width="50%"><video id="videoupload" controls="controls" width="300px"
-									height="400px"></video>
+							<td width="40%"><video id="videoupload" controls="controls"
+									width="300px" height="400px"></video>
 								<div class="bbD">
-									<form id="form1" enctype="multipart/form-data" method="post"
-										action="Upload.aspx">
-										<td width="15%">
-											<div>
-												<input type="file" name="fileToUpload" id="fileToUpload"
-													onchange="fileSelected();">
-											</div>
-											<div id="fileName" style="text-align: left;"></div>
-											<div id="fileSize" style="text-align: left;"></div>
-											<div id="fileType" style="text-align: left;"></div>
-											<div>
-												<input type="button" onclick="uploadFile()" value="上传">
-													<input type="button" onclick="uploadCanceled()"
-													value="取消" />
-											</div>
-											<div id="progressNumber"></div>
-										</td>
-									</form>
+									<table border="1.5" width="100%">
+										<tr height="80">
+											<td>文件描述:</td>
+											<td>
+												<div id="fileName" style="text-align: left;"></div>
+												<div id="fileSize" style="text-align: left;"></div>
+												<div id="fileType" style="text-align: left;"></div>
+											</td>
+										</tr>
+										<tr height="40">
+											<td>请选择文件:</td>
+											<td><label class="btn_select"> <span>选择视频文件</span>
+													<input type="file" style="display: none" accept="video/*"
+													id="fileUpload" onchange="fileSelected();"></label></td>
+										</tr>
+										<tr height="40">
+											<td>操作:</td>
+											<td><input type="button" class="btn_upload"
+												onclick="uploadFile()" value="上传"> <input
+													type="button" class="btn_cancele"
+													onclick="uploadCanceled()" value="取消" /></td>
+										</tr>
+									</table>
 								</div></td>
 						</tr>
 						<tr>
 							<td colspan="2">
 								<div class="bbD">
 									<p class="bbDP">
-										<button class="btn_ok btn_yes" href="#"
+										<button class="btn_ok btn_yes"
 											onclick="javascript:save();">保存</button>
-										<a class="btn_ok btn_no" href="user.html">取消</a>
+											<button class="btn_ok btn_no"
+											onclick="javascript:cancel();">取消</button>
 									</p>
 								</div>
 							</td>

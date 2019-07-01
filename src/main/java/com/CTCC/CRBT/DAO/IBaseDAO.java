@@ -198,4 +198,17 @@ public interface IBaseDAO<T, ID extends Serializable> {
 	public abstract PageResults<T> findPageByFetchedHql(String hql, String countHql, int pageNo, int pageSize,
 			Object... values);
 
+	/**
+	 * <根据HQL语句，得到对应的list>
+	 * 
+	 * @param hqlString
+	 *            HQL语句
+	 * @param values
+	 *            不定参数的Object数组
+	 * @return 查询多个实体的List集合
+	 * @see com.itv.launcher.util.IBaseDao#getListByHQL(java.lang.String,
+	 *      java.lang.Object[])
+	 */
+	public abstract List<String> getListByHQL(String hqlString);
+
 }

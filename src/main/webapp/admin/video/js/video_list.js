@@ -46,45 +46,23 @@ function list(p) {
 						"allowScriptAccess" : 'always'
 					});
 					var td_edit = $('<a></a>')
-							.attr("href", "./video_edit.html");
+							.attr("href", "./video_edit.html?id="
+						+ data.results[4 * i + j].video_id);
 					var td_id = $('<p></p>').append(
-							data.results[4 * i + j].video_name);
-					var td_name = $('<p></p>').append(
 							data.results[4 * i + j].video_id);
+					var td_name = $('<p></p>').append(
+							data.results[4 * i + j].video_name);
 					td_edit.append(td_id).append(td_name);
 					var td = $('<td></td>').append(td_video).append(td_edit);
 					tr.append(td);
 					$("#videolist").append(tr);
 				}
 			}
-
-			// $.each(data.results,function(index, value) {
-			// var td_video = $('<video></video>').attr({
-			// 'src' : value.video_path,
-			// "controls" : "controls",
-			// "autoplay" : "autoplay",
-			// "width" : "250px",
-			// "height" : "250px",
-			// "allowFullScreen" : 'true',
-			// "quality" : 'high',
-			// "align" : 'middle',
-			// "allowScriptAccess" : 'always'
-			// });
-			// var td_edit = $('<a></a>').attr("href", "./video_edit.html");
-			// var td_id = $('<p></p>').append(value.video_name);
-			// var td_name = $('<p></p>').append(value.video_id);
-			// td_edit.append(td_id).append(td_name);
-			// var td = $('<td></td>').append(td_video).append(td_edit);
-			// var tr = $('<tr></tr>').attr('height', "40px");
-			// tr.append(td);
-			// $("#videolist").append(tr);
-			// });
 		}
 	});
 }
 
 function find() {
-	console.log("3525252542");
 	list(1);
 }
 

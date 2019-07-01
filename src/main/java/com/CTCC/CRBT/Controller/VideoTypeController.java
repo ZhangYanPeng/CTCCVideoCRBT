@@ -1,5 +1,7 @@
 package com.CTCC.CRBT.Controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +21,13 @@ public class VideoTypeController {
 	@RequestMapping(value = "/video_type_list")
 	public @ResponseBody PageResults<VideoType> video_type_list(String pageNo, String findStr) {
 		return videoTypeService.GetByPage(Integer.valueOf(pageNo), findStr);
+	}
+
+	// 视频类型列表下拉框
+	@RequestMapping(value = "/video_type_select_list")
+	public @ResponseBody List<String> video_type_select_list() {
+		//System.out.println(videoTypeService.GetAllVideoType());
+		return videoTypeService.GetAllVideoType();
 	}
 
 	// 视频类型添加

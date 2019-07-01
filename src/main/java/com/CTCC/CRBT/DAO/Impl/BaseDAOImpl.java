@@ -499,5 +499,21 @@ public class BaseDAOImpl<T, ID extends Serializable> implements IBaseDAO<T, ID> 
 
 		return retValue;
 	}
+	
+	/**
+	 * <根据HQL语句，得到对应的list>
+	 * 
+	 * @param hqlString
+	 *            HQL语句
+	 * @return 查询多个实体的List集合
+	 * @see com.itv.launcher.util.IBaseDao#getListByHQL(java.lang.String,
+	 *      java.lang.Object[])
+	 */
+	@Override
+	public List<String> getListByHQL(String hqlString) {
+		Query query = this.getSession().createQuery(hqlString);
+		List<String> list = query.list();
+		return list;
+	}
 
 }

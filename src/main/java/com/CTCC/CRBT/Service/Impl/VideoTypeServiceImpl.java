@@ -1,5 +1,7 @@
 package com.CTCC.CRBT.Service.Impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -67,7 +69,6 @@ public class VideoTypeServiceImpl implements IVideoTypeService {
 	public PageResults<VideoType> GetByPage(int pageNo, String findStr) {
 		// TODO Auto-generated method stub
 		try{
-			PageResults<VideoType> pr = null;
 			String hql = "from VideoType";
 			String countHql = "select COUNT(*) from VideoType";
 			if(findStr == null || findStr.equals("")){
@@ -97,5 +98,29 @@ public class VideoTypeServiceImpl implements IVideoTypeService {
 			return null;
 		}
 	}
+
+	@Override
+	@Transactional
+	public List<String> GetAllVideoType() {
+		// TODO Auto-generated method stub
+		try{
+			String hql = "select type_name from VideoType";
+			return videoTypeDAO.getListByHQL(hql);
+		}catch(Exception e){
+			return null;
+		}
+	}
+
+//	@Override
+//	public VideoType GetByTypeName(String typeName) {
+//		// TODO Auto-generated method stub
+//		try{
+//			String hql = "select COUNT(*) from VideoType where type_name = ?";
+//			Object[] params = {type};
+//			return videoTypeDAO.getByHQL(hql, params);
+//		}catch(Exception e){
+//			return null;
+//		}
+//	}
 
 }

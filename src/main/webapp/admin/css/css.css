@@ -275,6 +275,37 @@ td {
 	width: 280px;
 	height: 210px;
 }
+
+.btn_select {
+	padding: 5px 10px;
+	background-color: #3695cc; 
+	color : #fff;
+	cursor: pointer;
+	text-align: center;
+	border: none;
+	border-radius: 5px;
+}
+
+.btn_upload {
+	padding: 5px 10px;
+	background-color: #66CC00; 
+	color : #fff;
+	cursor: pointer;
+	text-align: center;
+	border: none;
+	border-radius: 5px;
+}
+
+.btn_cancele {
+	padding: 5px 10px;
+	background-color: #CC0033; 
+	color : #fff;
+	cursor: pointer;
+	text-align: center;
+	border: none;
+	border-radius: 5px;
+}
+
 .bbD .selCss{  
 	width: 300px;
     height: 40px;
@@ -297,6 +328,14 @@ td {
 
 .bbD .input3 {
 	width: 240px;
+	height: 40px;
+	border: 1px solid #ccc;
+	text-indent: 15px;
+	margin-left: 10px;
+}
+
+.bbD .input4 {
+	width: 350px;
 	height: 40px;
 	border: 1px solid #ccc;
 	text-indent: 15px;

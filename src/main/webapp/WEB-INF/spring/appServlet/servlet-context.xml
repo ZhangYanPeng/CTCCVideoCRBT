@@ -13,14 +13,12 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<!-- DispatcherServlet Context: defines this servlet's request-processing 
-		infrastructure -->
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 
-	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
-		up static resources in the ${webappRoot}/resources directory -->
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/admin/css/**" location="/admin/css/**" />
 	<resources mapping="/admin/lib/**" location="/admin/lib/**" />
@@ -29,30 +27,22 @@
 	<resources mapping="/admin/**" location="/admin/**" />
 	<resources mapping="/**" location="/admin/**" />
 
-	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
-		in the /WEB-INF/views directory -->
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/admin/" />
 		<beans:property name="suffix" value=".html" />
 	</beans:bean>
 
-	<context:component-scan
-		base-package="com.CTCC.CRBT" />
+	<context:component-scan base-package="com.CTCC.CRBT" />
 
-	<!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
-		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" 
-		/> <property name="url" value="jdbc:oracle:thin:@192.168.1.250:1521:VideoCRBT" 
-		/> <property name="username" value="system" /> <property name="password" 
-		value="123" /> </bean> -->
-
-	<beans:bean id="DataSource"
-		class="org.apache.commons.dbcp.BasicDataSource">
+	<beans:bean id="DataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<beans:property name="driverClassName">
 			<beans:value>oracle.jdbc.driver.OracleDriver</beans:value>
 		</beans:property>
 		<beans:property name="url">
-			<beans:value>jdbc:oracle:thin:@192.168.1.250:1521:VideoCRBT</beans:value>
+			<beans:value>jdbc:oracle:thin:@192.168.1.250:1521:VideoCRBT
+			</beans:value>
 		</beans:property>
 		<beans:property name="username">
 			<beans:value>xjtu</beans:value>
@@ -63,8 +53,7 @@
 	</beans:bean>
 
 	<!-- Hibernate Session Factory -->
-	<beans:bean id="mySessionFactory"
-		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+	<beans:bean id="mySessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<beans:property name="dataSource" ref="DataSource" />
 		<beans:property name="packagesToScan">
 			<beans:array>
@@ -84,14 +73,23 @@
 	</beans:bean>
 
 	<!-- Hibernate Transaction Manager -->
-	<beans:bean id="transactionManager"
-		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-		<beans:property name="sessionFactory"
-			ref="mySessionFactory" />
+	<beans:bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<beans:property name="sessionFactory" ref="mySessionFactory" />
+	</beans:bean>
+
+	<!-- 文件上传配置 / 允许文件上传 -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 上传的最大限制（-1表示无大小限制） -->
+		<beans:property name="maxUploadSize" value="-1" />
+		<!-- 默认编码 -->
+		<beans:property name="defaultEncoding" value="UTF-8" />
+		<!-- 上传文件的解析 -->
+		<beans:property name="resolveLazily" value="true" />
+		<!-- 上传文件的临时路径 -->
+		<beans:property name="uploadTempDir" value="/uploadfiles/tmp" />
 	</beans:bean>
 
 	<!-- Activates annotation based transaction management -->
-	<tx:annotation-driven
-		transaction-manager="transactionManager" />
+	<tx:annotation-driven transaction-manager="transactionManager" />
 
 </beans:beans>

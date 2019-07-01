@@ -66,6 +66,10 @@ function list(p) {
 }
 
 function save() {
+	if($("#newTypeName").val() == ''){
+		alert("请输入新增类型名，再提交！");
+		return;
+	}
 	$.ajax({
 		sync : false,
 		cache : false,

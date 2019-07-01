@@ -26,7 +26,7 @@ public class Video {
 	@Id    
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "menuSeq")    
 	@SequenceGenerator(name = "menuSeq", initialValue = 1, allocationSize = 1, sequenceName = "MENU_SEQUENCE")
-	private String video_id; //视频标识
+	private long video_id; //视频标识
 
 	@Column( unique=true, nullable=false)
 	private String video_name; //视频名称
@@ -38,6 +38,8 @@ public class Video {
 	
 	private String tags; //不同的标签以“；”间隔
 	private Date create_date; //视频创建时间
+	
+	@Column( unique=false, nullable=false)
 	private double price;//视频订购价格
 	
 	@Column( unique=true, nullable=false)
@@ -63,10 +65,11 @@ public class Video {
 	@JsonIgnore
 	private Set<Account> accounts;
 	
-	public String getVideo_id() {
+	
+	public long getVideo_id() {
 		return video_id;
 	}
-	public void setVideo_id(String video_id) {
+	public void setVideo_id(long video_id) {
 		this.video_id = video_id;
 	}
 	public String getVideo_name() {
