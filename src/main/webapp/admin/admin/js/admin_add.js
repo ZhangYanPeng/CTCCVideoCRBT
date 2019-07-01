@@ -32,7 +32,8 @@ function save() {
 				alert("提交失败，请重试！");
 			}else if (data == 1) {
 				alert("添加成功！");
-				window.location.href = "./admin_list.html";
+				list(1);
+				//window.location.href = "./admin_list.html";
 			}
 		}
 	});

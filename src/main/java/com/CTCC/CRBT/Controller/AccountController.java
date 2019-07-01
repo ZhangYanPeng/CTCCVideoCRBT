@@ -15,7 +15,7 @@ public class AccountController {
 	@Autowired
 	IAccountService userService;
 
-	// 管理员列表加载
+	// 用户列表加载
 	@RequestMapping(value = "/user_list")
 	public @ResponseBody PageResults<Account> userList(String pageNo, String findStr) {
 		return userService.GetByPage(Integer.valueOf(pageNo), findStr);
@@ -50,13 +50,13 @@ public class AccountController {
 		return 1;
 	}
 
-	// 管理员列表加载
+	// 用户列表加载
 	@RequestMapping(value = "/user_load")
 	public @ResponseBody Account user_load(String id) {
 		return userService.Get(Long.valueOf(id));
 	}
 
-	// 管理员删除
+	// 用户删除
 	@RequestMapping(value = "/delete_user")
 	public @ResponseBody int delete_user(String id) {
 		return userService.Delete(Long.valueOf(id));

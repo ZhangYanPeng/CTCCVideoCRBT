@@ -1,6 +1,11 @@
 function save() {
-	if ($("#usertel").val() == '') {
-		alert("用户手机号为空！");
+	if ($("#password").val() != $("#repassword").val()) {
+		alert("两次密码不一致，请检查！");
+		return;
+	}
+	
+	if ($("#password").val() == '' || $("#cpname").val() == '') {
+		alert("密码为空或用户名为空！");
 		return;
 	}
 	$.ajax({
@@ -8,9 +13,11 @@ function save() {
 		cache : false,
 		type : 'POST',
 		crossDomain : true,
-		url : "./user_add",
+		url : "./contentProvider_add",
 		data : {
-			usr_tel : $("#usertel").val()
+			company : $("#company").val(),
+			cp_name : $("#cpname").val(),
+			cp_pwd : $("#password").val(),
 		},
 		dataType : "json",
 		contentType : "application/x-www-form-urlencoded;charset=utf-8",
@@ -24,8 +31,8 @@ function save() {
 				alert("提交失败，请重试！");
 			}else if (data == 1) {
 				alert("添加成功！");
-				list(1);
-				//window.location.href = "./user_list.html";
+				//list(1);
+				window.location.href = "./contentProvider_list.html";
 			}
 		}
 	});
