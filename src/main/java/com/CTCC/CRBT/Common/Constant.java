@@ -1,5 +1,8 @@
 package com.CTCC.CRBT.Common;
 
+/**
+ *公共类项目使用的全局常量
+ */
 public class Constant {
 	public static int PAGESIZE = 8;//list每页最大项数
 	public static final String STANDARD_FORMAT = "yyyy-MM-dd";//文件上传以当天日期为目录

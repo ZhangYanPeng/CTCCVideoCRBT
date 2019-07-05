@@ -1,6 +1,6 @@
 var video_id;
 $(document).ready(function() {
-	console.log("1111");
+	//console.log("1111");
 	video_id = getQueryString("id");
 	load_data(video_id);
 	load_type();

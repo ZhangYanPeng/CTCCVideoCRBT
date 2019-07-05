@@ -26,7 +26,7 @@ public class ContentProvider {
 	
 	@Column( unique=true, nullable=false)
 	private String cp_name;//CP账号名
-	@Column( unique=true, nullable=false)
+	@Column( unique=false, nullable=false)
 	private String cp_pwd;//CP账号密码
 	@Column( unique=true, nullable=false)
 	private String company;//CP公司名

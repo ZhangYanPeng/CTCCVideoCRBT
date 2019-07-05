@@ -20,34 +20,56 @@ import javax.persistence.Table;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 
+/**
+ * 视频实体表的设计，包括视频标识、名称、描述、分类、订购价格、地址等
+ */
 @Entity
 @Table(name="T_VIDEO")
 public class Video {
-	@Id    
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "menuSeq")    
-	@SequenceGenerator(name = "menuSeq", initialValue = 1, allocationSize = 1, sequenceName = "MENU_SEQUENCE")
-	private long video_id; //视频标识
+	
+	/**
+	 * 视频标识，+1递增
+	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "videoSeq")
+	@SequenceGenerator(name = "videoSeq", initialValue = 1, allocationSize = 1, sequenceName = "VIDEO_SEQUENCE")
+	private long video_id;
 
+	/**
+	 * 视频名称（唯一、不为空）
+	 */
 	@Column( unique=true, nullable=false)
-	private String video_name; //视频名称
+	private String video_name; 
 	
-	private String video_desc; //视频描述
+	/**
+	 * 视频描述
+	 */
+	private String video_desc;
 	
+	/**
+	 * 视频分类（多对一、不唯一、不为空）
+	 */
 	@ManyToOne
-	private VideoType type; //视频分类（搞笑、MV等）
+	private VideoType type; //视频分类
+	
 	
 	private String tags; //不同的标签以“；”间隔
 	private Date create_date; //视频创建时间
 	
+	/**
+	 * 视频订购价格（不唯一、不为空）
+	 */
 	@Column( unique=false, nullable=false)
-	private double price;//视频订购价格
+	private double price;
 	
+	/**
+	 * 视频地址（文件服务器接口）（唯一、不为空）
+	 */
 	@Column( unique=true, nullable=false)
-	private String video_path;//视频地址（文件服务器接口）
+	private String video_path;
 
 	@OneToOne
 	private Rate rate;
-	
 	private int owner_type; //0: 公开 1：个人用户   2：集团用户
 	@ManyToOne
 	private Account owner_account;
@@ -55,17 +77,19 @@ public class Video {
 	private Group owner_Group;
 	@ManyToOne
 	private ContentProvider owner_cp;
-
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name="default_video_video_id") 
 	@JsonIgnore
 	private Set<Group> groups;
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name="default_video_video_id") 
+	@JoinColumn(name="default_video_video_id")
 	@JsonIgnore
 	private Set<Account> accounts;
 	
 	
+	/**
+	 * Video类属性的Get/Set方法
+	 */
 	public long getVideo_id() {
 		return video_id;
 	}

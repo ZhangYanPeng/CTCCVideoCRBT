@@ -6,9 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.CTCC.CRBT.DAO.PageResults;
-import com.CTCC.CRBT.Entity.Account;
 import com.CTCC.CRBT.Entity.ContentProvider;
-import com.CTCC.CRBT.Service.IAccountService;
 import com.CTCC.CRBT.Service.IContentProviderService;
 
 @Controller

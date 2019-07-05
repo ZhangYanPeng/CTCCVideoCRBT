@@ -18,34 +18,55 @@ import javax.persistence.Table;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 
+/**
+ * 用户实体表的设计，包括用户标识、手机号等
+ */
 @Entity
-@Table(name="T_ACCOUNT")
+@Table(name = "T_ACCOUNT")
 public class Account {
-	@Id    
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "AccSeq")    
+
+	/**
+	 * 用户标识，+1递增
+	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "AccSeq")
 	@SequenceGenerator(name = "AccSeq", initialValue = 1, allocationSize = 1, sequenceName = "ACCOUNT_SEQUENCE")
-	private long usr_id; //*用户ID
-	
-	private String usr_pwd; //用户密码（可能需要）
-	private String usr_idenfication; //用户识别号（可能需要）
-	private Date reg_date; //注册日期（可能需要）
-	
-	@Column( unique=true, nullable=false)
-	private String usr_tel; //*用户号码
-	
-	private int usr_status; //*账户状态//0：冻结；1：有效
-	
+	private long usr_id;
+
+	/**
+	 * 注册日期（添加日期，自动生成）（不唯一、不为空）
+	 */
+	@Column(unique = false, nullable = false)
+	private Date reg_date;
+
+	/**
+	 * 用户号码（唯一、不为空）
+	 */
+	@Column(unique = true, nullable = false)
+	private String usr_tel;
+
+	/**
+	 * 用户状态（唯一、不为空）
+	 */
+	private int usr_status; // *账户状态//0：冻结；1：有效
+
+	private String usr_pwd; // 用户密码（可能需要）
+	private String usr_idenfication; // 用户识别号（可能需要）
+
 	@ManyToOne
 	private Group group;
-	
+
 	@ManyToOne
 	private Video default_video;
-	
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name="owner_account_usr_id") 
+	@JoinColumn(name = "owner_account_usr_id")
 	@JsonIgnore
 	private Set<Video> owner_videos;
-	
+
+	/**
+	 * Account类属性的Get/Set方法
+	 */
 	public long getUsr_id() {
 		return usr_id;
 	}
@@ -102,7 +123,7 @@ public class Account {
 		this.default_video = default_video;
 	}
 
-	public long getUsrID(){
+	public long getUsrID() {
 		return usr_id;
 	}
 
@@ -110,31 +131,31 @@ public class Account {
 		this.usr_id = usr_id;
 	}
 
-	public String getUsrPwd(){
+	public String getUsrPwd() {
 		return usr_pwd;
 	}
 
 	public void setUsrPwd(String usr_pwd) {
 		this.usr_pwd = usr_pwd;
 	}
-	
-	public Date getRegDate(){
+
+	public Date getRegDate() {
 		return reg_date;
 	}
 
 	public void setRegDate(Date reg_date) {
 		this.reg_date = reg_date;
 	}
-	
-	public String getUsrTel(){
+
+	public String getUsrTel() {
 		return usr_tel;
 	}
 
 	public void setUsrTel(String usr_tel) {
 		this.usr_tel = usr_tel;
 	}
-	
-	public int getUsrStatus(){
+
+	public int getUsrStatus() {
 		return usr_status;
 	}
 
@@ -157,6 +178,5 @@ public class Account {
 	public void setOwner_videos(Set<Video> owner_videos) {
 		this.owner_videos = owner_videos;
 	}
-	
-	
+
 }
