@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>添加用户信息</title>
+<title>编辑内容提供商信息</title>
 <link rel="stylesheet" type="text/css" href="../css/css.css" />
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="../js/common.js"></script>
@@ -14,33 +14,45 @@
 		<div class="pageTop">
 			<div class="page">
 				<img src="../img/coin02.png" /><span><a href="#">首页</a>&nbsp;-&nbsp;<a
-					href="#">网站管理</a>&nbsp;-</span>&nbsp;编辑用户
+					href="#">网站管理</a>&nbsp;-</span>&nbsp;编辑内容提供商信息
 			</div>
 		</div>
+		<!-- 内容提供商信息编辑页面样式 -->
 		<div class="page ">
-			<!-- 会员注册页面样式 -->
 			<div class="banneradd bor">
 				<div class="baTopNo">
-					<span>编辑用户</span>
+					<span>编辑内容提供商信息</span>
 				</div>
 				<div class="baBody">
 					<div class="bbD">
-						&nbsp;&nbsp;&nbsp;&nbsp;用户ID：<input id="id" type="text"
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;内容提供商ID：<input id="id" type="text"
 							disabled="disabled" class="input3" />
 						<div class="bbD">
-							&nbsp;&nbsp;&nbsp;用户手机号： <input id="usertel" type="text"
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;内容提供商账号： <input id="cpname" type="text"
+								class="input3" />
+						</div>
+						<div class="bbD">
+							&nbsp;&nbsp;&nbsp;内容提供商公司名： <input id="company" type="text"
+								class="input3" />
+						</div>
+						<div class="bbD">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登陆密码：<input id="password" type="password"
+								class="input3" autocomplete="new-password" />
+						</div>
+						<div class="bbD">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重复密码：<input id="repassword" type="password"
 								class="input3" />
 						</div>
 						<div class="bbD">
 							<p class="bbDP">
 								<button class="btn_ok btn_yes" href="#"
 									onclick="javascript:edit();">提交</button>
-								<a class="btn_ok btn_no" href="./user_list.html">取消</a>
+								<a class="btn_ok btn_no" href="./contentProvider_list.html">取消</a>
 							</p>
 						</div>
 					</div>
 				</div>
-				<!-- 会员注册页面样式end -->
+				<!-- 内容提供商信息编辑页面样式END -->
 			</div>
 		</div>
 	</div>

@@ -29,9 +29,9 @@ function list(p) {
 
 			var tab_title = "<tr>"
 				+ "<td width='30px' class='tdColor tdC'>序号</td>"
-				+ "<td width='200px' class='tdColor'>账号名</td>"
-				+ "<td width='200px' class='tdColor'>账号密码</td>"
-				+ "<td width='200px' class='tdColor'>公司标识</td>"
+				+ "<td width='200px' class='tdColor'>公司名称</td>"
+				+ "<td width='200px' class='tdColor'>账号</td>"
+				+ "<td width='200px' class='tdColor'>密码</td>"
 				+ "<td width='200px' class='tdColor'>操作</td>"
 				+ "	</tr>";
 			$("#contentProviderlist").html(tab_title);
@@ -50,7 +50,7 @@ function list(p) {
 				var td_op = $('<td></td>').append(a_edit)
 				.append("<img class='operation delban' src='../img/delete.png' onclick='javascript:removecontentProvider("+ value.cp_id+ ");' /></td>");
 				var tr = $('<tr></tr>').attr('height',"40px");
-				tr.append(td_id).append(td_un).append(td_pw).append(td_comp).append(td_op);
+				tr.append(td_id).append(td_comp).append(td_pw).append(td_un).append(td_op);
 				$("#contentProviderlist").append(tr);
 			});
 		}

@@ -90,11 +90,11 @@ public class ContentProviderServiceImpl implements IContentProviderService {
 
 	@Override
 	@Transactional
-	public ContentProvider validContentProvider(String usr_tel) {
+	public ContentProvider validContentProvider(String cp_name) {
 		// TODO Auto-generated method stub
 		try{
-			String hql = "from Content_Provider where company = ?";
-			Object[] objs = {usr_tel};
+			String hql = "from ContentProvider where cp_name = ?";
+			Object[] objs = {cp_name};
 			return cpDAO.getByHQL(hql, objs);
 		}catch(Exception e){
 			return null;
